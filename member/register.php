@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/checkid.js"></script>
+    <script>
+    function checkId() {
+        window.open(
+            "checkid.php?userid=" + document.register.userid.value,
+            "IDcheck",
+            "left=50, top=50, width=50, height=10, scrollbars=no, resizeable=no"
+        );
+    }
+    </script>
 
     <title>test</title>
 </head>
