@@ -55,7 +55,8 @@
 
     <div class="mt-3 d-flex gap-5">
         <div>
-            <input type="file" name="profile" class="form-control">
+            <label for="f_photo" class="form-label">프로필 이미지</label>
+            <input type="file" name="profile" id="f_photo" class="form-control">
         </div>
         <img src="./images/pngegg.png" class="w-25" alt="profile image">
     </div>
