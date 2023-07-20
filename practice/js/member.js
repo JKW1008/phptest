@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    self.location.href = "./member_input.php";
+    const f = document.stipulation_form;
+
+    f.chk.value = 1;
+    f.submit();
+
+    // self.location.href = "./member_input.php";
   });
 });
