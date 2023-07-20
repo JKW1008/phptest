@@ -33,6 +33,5 @@
 
 
 </main>
-</div>
 
 <?php include 'inc_footer.php';?>
