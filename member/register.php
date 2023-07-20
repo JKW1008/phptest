@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/checkid.js"></script>
+
     <title>test</title>
 </head>
 
@@ -12,7 +14,7 @@
         <div class="mainCon">
             <div class="registerTitle">회원가입</div>
             <div class="registerBox">
-                <form action="member_process.php?mode=register" method="post">
+                <form name="register" action="member_process.php?mode=register" method="post">
                     <input type="hidden" name="id" value="register">
                     <table class="registerTable">
                         <tr>
