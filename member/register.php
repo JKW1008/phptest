@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/style.css?ver=4">
     <script>
     function checkId() {
-        window.open(
-            "checkid.php?userid=" + document.register.userid.value,
-            "IDcheck",
-            "left=50, top=50, width=50, height=10, scrollbars=no, resizeable=no"
-        );
+        window.open("checkId.php?userid=" + document.register.userid.value, "IDcheck",
+            "left=50, top=50, width=50, height=10, scrollbars=no, resizeable=no");
     }
     </script>
-
     <title>test</title>
 </head>
 
@@ -22,7 +20,7 @@
         <div class="mainCon">
             <div class="registerTitle">회원가입</div>
             <div class="registerBox">
-                <form action="member_process.php?mode=register" method="post">
+                <form name="register" action="member_process.php?mode=register" method="post">
                     <input type="hidden" name="id" value="register">
                     <table class="registerTable">
                         <tr>
