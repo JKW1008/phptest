@@ -54,8 +54,15 @@
     </div>
 
     <div class="mt-3 d-flex gap-5">
-        <div></div>
-        <img src="" alt="">
+        <div>
+            <input type="file" name="profile" class="form-control">
+        </div>
+        <img src="./images/pngegg.png" class="w-25" alt="profile image">
+    </div>
+
+    <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-primary w-50">가입확인</button>
+        <button class="btn btn-secondary w-50">가입취소</button>
     </div>
 </main>
 <?php
