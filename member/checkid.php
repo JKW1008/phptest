@@ -1,8 +1,9 @@
 <?php
     require_once('../db/db.php');
-    $userid = $_GET['userid'];
+    $userid = $_GET['mode'];
 
-    if(!$userid){
+    if (isset($_POST['userid'])) {
+        $userid = $_POST['userid'];
         echo "
         <p>아이디를 입력해주세요.</p>
         <center><input type=button value=창닫기 onclick='self.close()'></center>

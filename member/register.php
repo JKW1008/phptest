@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="../css/style.css?ver=4">
     <script>
     function checkId() {
+        // 사용자 아이디 값 가져오기
+        var userid = document.register.userid.value;
+
+        // 사용자 아이디가 비어있는 경우 알림
+        if (userid.trim() === '') {
+            alert('아이디를 입력해주세요.');
+            return;
+        }
         window.open("checkId.php?userid=" + document.register.userid.value, "IDcheck",
             "left=50, top=50, width=50, height=10, scrollbars=no, resizeable=no");
     }
