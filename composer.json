@@ -1,0 +1,6 @@
+{
+    "name": "user/project",
+    "description": "A simple PHP project for \"Hello, World!\" output.",
+    "license": "MIT",
+    "require": {}
+}
