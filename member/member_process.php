@@ -11,6 +11,8 @@
             $sex = $_POST['sex'];
             $tel = $_POST['tel'];
             $email = $_POST['email'];
+
+            echo $id. ','.$userid.','.$pw1.','.$pw2.','.$name.','.$sex.','.$tel.','.$email;
         break;
     }
 ?>
