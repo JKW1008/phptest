@@ -16,6 +16,13 @@ try {
     // $conn = mysqli_connect($host, $user, $pass, $db, $port);
     echo "접속 성공!";
 } catch (PDOException $e) {
-    die("접속 실패: " . $e->getMessage());
+   echo "접속 실패: " . $e->getMessage();
+}
+function errMsg($msg){
+    echo "<script>
+        window.alert('$msg');
+        history.back(1);
+    </script>";
+    exit;
 }
 ?>
