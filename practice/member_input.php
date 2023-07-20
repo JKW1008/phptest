@@ -60,7 +60,7 @@
         <img src="./images/pngegg.png" class="w-25" alt="profile image">
     </div>
 
-    <div class="mt-3 d-flex gap-2">
+    <div class="mt-3 d-flex gap-2 mt-5">
         <button class="btn btn-primary w-50">가입확인</button>
         <button class="btn btn-secondary w-50">가입취소</button>
     </div>
