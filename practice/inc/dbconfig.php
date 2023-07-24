@@ -23,7 +23,7 @@ try {
     
 } catch (PDOException $e) {
     // 예외 처리
-    echo "데이터베이스 연결 실패: " . $e->getMessage();
+    // echo "데이터베이스 연결 실패: " . $e->getMessage();
     // 실패 시, NULL을 반환하거나 다른 방식으로 처리할 수도 있습니다.
     return null;
 }

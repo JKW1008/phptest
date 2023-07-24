@@ -14,11 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
     f1.append("mode", "id_chk");
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "./pg/member.php", "true");
-    xhr.send();
+    xhr.open("POST", "./pg/member_process.php", "true");
+    xhr.send(f1);
 
     xhr.onload = () => {
-      //
+      if (xhr.status == 200) {
+        const data = JSON.parse(xhr.responseText);
+
+        if (data.result == "success") {
+          alert("사용이 가능한 아이디입니다.");
+        } else if (data.result == "fail") {
+          alert("이미 사용중인 아이디입니다. 다른 아이디를 입력해 주세요.");
+          f_id.value = "";
+          f_id.focus();
+        }
+      }
     };
   });
 });
