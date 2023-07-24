@@ -11,7 +11,10 @@ try {
     $pdo = new PDO($dsn, $user, $pass);
 
     // PDO 연결 설정
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Prepared Statement 를 지원하지 않는 경우 데이터베이스의 기능을 사용하도록 해줌
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true); // 쿼리 버퍼링을 활성화
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // pdo 객체가 에러를 처리하는 방식 정함
 
     // 연결이 정상적으로 설정되었을 때, 이곳에서 데이터베이스 쿼리를 실행하거나 다른 작업을 수행할 수 있습니다.
 
