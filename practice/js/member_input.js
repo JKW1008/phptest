@@ -80,6 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (data.result == "empty_email") {
           alert("이메일이 비어 있습니다.");
           f_email.focus();
+        } else if (data.result == "email_format_wrong") {
+          alert("이메일이 형식에 맞지 않습니다.");
+          f_email.value = "";
+          f_email.focus();
         }
       }
     };
@@ -99,6 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!idChecked) {
       // 중복확인이 되지 않은 경우
       alert("아이디 중복확인을 해주시기 바랍니다.");
+      return false;
+    }
+
+    // 이름 입력 확인
+    if (f.name.value === "") {
+      alert("이름을 입력해주세요.");
+      f.name.focus();
       return false;
     }
 
@@ -124,7 +135,98 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    // // 폼 제출
-    // f.submit();
+    // 이메일 입력 부분 확인
+    if (f.email.value == "") {
+      alert("이메일을 입력해 주세요");
+      f.email.focus();
+      return false;
+    }
+
+    // 이메일 중복체크 여부 확인
+    if (f.email_chk.value == 0) {
+      alert("이메일 중복확인을 해주세요");
+      return false;
+    }
+
+    // 우편번호 입력확인
+    if (f.zipcode.value == "") {
+      alert("우편번호를 입력해주세요.");
+      return false;
+    }
+
+    // 주소입력 확인
+    if (f.addr1.value == "") {
+      alert("주소를 입력해 주세요.");
+      f.addr1.focus();
+      return false;
+    }
+    if (f.addr2.value == "") {
+      alert("상세주소를 입력해 주세요.");
+      f.addr2.focus();
+      return false;
+    }
+    // 폼 제출
+    f.submit();
+  });
+
+  // 우편번호 찾기
+  const btn_zipcode = document.querySelector("#btn_zipcode");
+  btn_zipcode.addEventListener("click", () => {
+    new daum.Postcode({
+      oncomplete: function (data) {
+        console.log(data);
+        let addr = "";
+        let extra_addr = "";
+
+        if (data.userSelectedType == "J") {
+          addr = data.jibunAddress;
+        } else if (data.userSelectedType == "R") {
+          addr = data.roadAddress;
+        }
+
+        if (data.bname != "") {
+          extra_addr = data.bname;
+        }
+
+        if (data.buildingName != "") {
+          if (extra_addr == "") {
+            extra_addr = data.buildingName;
+          } else {
+            extra_addr += ", " + data.buildingName;
+          }
+        }
+
+        if (extra_addr != "") {
+          extra_addr = " (" + extra_addr + ")";
+        }
+
+        const f_addr1 = document.querySelector("#f_addr1");
+        f_addr1.value = addr + extra_addr;
+
+        const f_zipcode = document.querySelector("#f_zipcode");
+        f_zipcode.value = data.zonecode;
+
+        const f_addr2 = document.querySelector("#f_addr2");
+        f_addr2.focus();
+      },
+    }).open();
+  });
+
+  const f_photo = document.querySelector("#f_photo");
+  f_photo.addEventListener("change", (e) => {
+    // console.log(e);
+    const reader = new FileReader();
+
+    reader.readAsDataURL(e.target.files[0]);
+
+    reader.onload = function (event) {
+      // //console.log(event);
+      // const img = document.createElement("img");
+      // img.setAttribute("src", event.target.result);
+      // document.querySelector("#f_preview").
+
+      const f_preview = document.querySelector("#f_preview");
+      f_preview.setAttribute("src", event.target.result);
+    };
   });
 });
