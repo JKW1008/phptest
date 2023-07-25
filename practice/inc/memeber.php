@@ -21,5 +21,14 @@ class Member{
 
         return $stmt->rowCount() ? true : false;
     }
+
+    public function email_exists($email){
+        $sql = "SELECT *FROM member WHERE email=:email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email',  $email);
+        $stmt->execute();
+
+        return $stmt->rowCount() ? true : false;
+    }
 }
 ?>
