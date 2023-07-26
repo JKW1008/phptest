@@ -22,7 +22,7 @@
     
     $memArr = $mem->getInfo($ses_id);
 
-    $js_array = ['js/member_input.js'];
+    $js_array = ['js/mypage.js'];
 
     $g_title = '회원가입';
 
@@ -102,7 +102,7 @@
             </div>
             <?php
                 if($memArr['photo']){
-                    echo '<img src="data/profile/'.$memArr['photo'].'" id="f_preview" class="w-25" alt="profile image">';
+                    echo '<img src="./data/profile/'.$memArr['photo'].'" id="f_preview" class="w-25" alt="profile image">';
                 }else{
                     echo  '<img src="./images/pngegg.png" id="f_preview" class="w-25" alt="profile image">';
                 }
