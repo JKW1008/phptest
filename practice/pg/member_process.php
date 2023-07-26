@@ -82,5 +82,7 @@
         <script>
             self.location.href='../member_success.php'
         </script>";
+    }else if($mode == 'edit'){
+        echo "수정되었습니다.";
     }
 ?>

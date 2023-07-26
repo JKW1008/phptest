@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 이메일 중복체크
+  // 이메일 중복체크 및 이메일 형식체크
   const btn_email_check = document.querySelector("#btn_email_check");
   btn_email_check.addEventListener("click", () => {
     const f_email = document.querySelector("#f_email");
@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (f_email.value === "") {
       alert("이메일을 입력해 주세요");
       f_email.focus();
+      return false;
+    }
+
+    if (document.input_form.old_email.value == f_email.value) {
+      alert("이메일을 변경하지 않으셨습니다.");
       return false;
     }
 
@@ -49,18 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn_submit = document.getElementById("btn_submit");
   btn_submit.addEventListener("click", () => {
     const f = document.input_form;
-    if (f.id.value === "") {
-      alert("아이디를 입력해주세요.");
-      f.id.focus();
-      return false;
-    }
-
-    // 아이디 중복확인 여부 체크
-    if (!idChecked) {
-      // 중복확인이 되지 않은 경우
-      alert("아이디 중복확인을 해주시기 바랍니다.");
-      return false;
-    }
 
     // 이름 입력 확인
     if (f.name.value === "") {
@@ -70,14 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 비밀번호 확인
-    if (f.password.value === "") {
-      alert("비밀번호를 입력해주세요.");
-      f.password.focus();
-      return false;
-    }
-
-    if (f.password2.value === "") {
-      alert("비밀번호확인을 입력해주세요.");
+    if (f.password.value != "" && f.password2.value == "") {
+      alert("확인용 비밀번호를 입력해주세요.");
       f.password2.focus();
       return false;
     }
@@ -98,10 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    // 이메일 중복체크 여부 확인
-    if (f.email_chk.value == 0) {
-      alert("이메일 중복확인을 해주세요");
-      return false;
+    // 이메일을 변경했다면
+    if (f.old_email.value != f.email.value) {
+      // 이메일 중복체크 여부 확인
+      if (f.email_chk.value == 0) {
+        alert("이메일 중복확인을 해주세요");
+        return false;
+      }
     }
 
     // 우편번호 입력확인

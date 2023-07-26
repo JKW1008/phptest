@@ -24,7 +24,7 @@
 
     $js_array = ['js/mypage.js'];
 
-    $g_title = '회원가입';
+    $g_title = 'My Page';
 
     // print_r($_POST);
     include 'inc_header.php';
@@ -38,6 +38,7 @@
         action="pg/member_process.php">
         <input type="hidden" name="mode" value="edit">
         <input type="hidden" name="email_chk" id="email_chk" value="0">
+        <input type="hidden" name="old_email" value="<?= $memArr['email']; ?>">
 
 
 
@@ -111,8 +112,8 @@
         </div>
 
         <div class="mt-3 d-flex gap-2 mt-5">
-            <button id="btn_submit" class="btn btn-primary w-50" type="button">가입확인</button>
-            <button class="btn btn-secondary w-50" type="button">가입취소</button>
+            <button id="btn_submit" class="btn btn-primary w-50" type="button">수정확인</button>
+            <button class="btn btn-secondary w-50" type="button">수정취소</button>
         </div>
     </form>
 </main>
