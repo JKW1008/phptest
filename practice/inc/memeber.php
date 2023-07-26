@@ -94,5 +94,14 @@ class Member{
 
         die('<script>self.location.href="../index.php"</script>');
     }
+
+    public function getInfo($id){
+        $sql = "SELECT * FROM member WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
 ?>
