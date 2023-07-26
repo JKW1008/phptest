@@ -73,6 +73,11 @@ class Member{
             $row = $stmt->fetch();
 
             if(password_verify($pw, $row['password'])){
+                $sql = "UPDATE member SET login_dt=NOW() WHERE id=:id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':id',  $id);
+                $stmt->execute();
+
                 return true;
             }else{
                 return false;
@@ -81,6 +86,13 @@ class Member{
             return false;
 
         }
+    }
+
+    public function logout(){
+        session_start();
+        session_destroy();
+
+        die('<script>self.location.href="../index.php"</script>');
     }
 }
 ?>

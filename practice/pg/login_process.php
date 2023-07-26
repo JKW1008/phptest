@@ -24,7 +24,6 @@
         $arr = ['result' => 'login_success'];
 
         session_start();
-
         $_SESSION['ses_id'] = $id;
     }else{
         $arr = ['result' => 'login_fail'];

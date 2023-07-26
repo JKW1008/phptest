@@ -1,8 +1,7 @@
 <?php
     session_start();
 
-    $ses_id = (isset($_SESSION['ses_id']) && $_SESSION['ses_id'] != '') ? $_SESSION['ses_id'] : '';
-
+    $ses_id = (isset($_SESSION['ses_id']) && $_SESSION['ses_id'] != '') ? $_SESSION['ses_id'] : ''; 
 
     $g_title = 'test';
     $js_array = [ 'js/home.js' ];
@@ -15,7 +14,6 @@
     <img src="images/logo.svg" class="w-50" alt="">
     <div>
         <h3>HOME 입니다.</h3>
-
     </div>
 </main>
 

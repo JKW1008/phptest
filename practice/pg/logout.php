@@ -1,7 +1,8 @@
 <?php
-    session_start();
-    session_destroy(); 
+    include '../inc/dbconfig.php';
+    include '../inc/memeber.php';
+
+    $mem = new Member($db);
+
+    $mem->logout();
 ?>
-<script>
-self.location.href = '../index.php';
-</script>
