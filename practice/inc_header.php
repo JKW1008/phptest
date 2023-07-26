@@ -30,7 +30,7 @@
             </a>
 
             <ul class="nav nav-pills">
-                <?php if($ses_id){
+                <?php if($ses_id != ''){
                     
                     // 로그인 상태
                 ?>
@@ -48,7 +48,6 @@
                         class="nav-link <?= ($menu_code == 'login') ? 'active' : ''; ?>">로그아웃</a></li>
                 <?php
                 }else{
-
                     //로그인 안된 상태
                 ?>
                 <li class="nav-item">
