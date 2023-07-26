@@ -37,13 +37,17 @@ class Member{
 
     // 회원정보 입력
     public function input($marr){
+
+        // 단방향 암호화
+        $new_hash_passowrd = password_hash($marr['password'], PASSWORD_DEFAULT);
+
         // var_dump($marray);
         $sql = "INSERT INTO member(id, name, password, email, zipcode, addr1, addr2, photo, create_at, ip) VALUES
                 (:id, :name, :password, :email, :zipcode, :addr1, :addr2, :photo, NOW(), :ip)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id'      ,  $marr['id']);        
         $stmt->bindParam(':name'    ,  $marr['name']);        
-        $stmt->bindParam(':password',  $marr['password']);        
+        $stmt->bindParam(':password',  $new_hash_passowrd);        
         $stmt->bindParam(':email'   ,  $marr['email']);        
         $stmt->bindParam(':zipcode' ,  $marr['zipcode']);        
         $stmt->bindParam(':addr1'   ,  $marr['addr1']);        
@@ -51,6 +55,32 @@ class Member{
         $stmt->bindParam(':photo'   ,  $marr['photo']); 
         $stmt->bindParam(':ip'      ,  $_SERVER['REMOTE_ADDR']);        
         $stmt->execute();
+    }
+
+    // 로그인
+    public function login($id, $pw){
+
+        // password_verify($password, $new_password);
+
+
+        $sql = "SELECT password FROM member WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id',  $id);
+
+        $stmt->execute();
+        
+        if($stmt->rowCount()){
+            $row = $stmt->fetch();
+
+            if(password_verify($pw, $row['password'])){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+
+        }
     }
 }
 ?>
