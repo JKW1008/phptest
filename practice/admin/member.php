@@ -11,8 +11,18 @@
     $db = $pdo;
 
     include '../inc/memeber.php';    // 회원관리 Class
+    include '../inc/lib.php';       // 페이지네이션
 
+    // $total, $limit, $page_limit, $page, $param
+    
     $mem = new Member($db);
+
+    $total = $mem->total();
+    $limit = 5;
+    $page_limit =5;
+    $page = (isset($_GET['page']) && $_GET['page'] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
+    $param = ''; 
+
 
     $memArr = $mem->list();
 
@@ -51,6 +61,9 @@
             }
         ?>
     </table>
+    <?php
+        echo my_pagination($total, $limit, $page_limit, $page, $param);
+    ?>
 </main>
 
 

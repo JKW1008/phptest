@@ -139,5 +139,14 @@ class Member{
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function total(){
+        $sql = "SELECT COUNT(*) cnt FROM member";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        return $row['cnt'];
+    }
 }
 ?>
