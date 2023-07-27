@@ -103,5 +103,32 @@ class Member{
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function edit($marr){
+        $sql = 'UPDATE member SET name=:name, email=:email, zipcode=:zipcode, addr1=:addr1, addr2=:addr2, photo=:photo';
+        $params = [
+            ':name' => $marr['name'], 
+            ':email' => $marr['email'],
+            ':zipcode' => $marr['zipcode'],
+            ':addr1' => $marr['addr1'],
+            ':addr2' => $marr['addr2'],
+            ':photo' => $marr['photo'],
+            ':id' => $marr['id']
+        ];
+
+        if($marr['password'] != ''){
+            // 단방향 암호화
+            $new_hash_passowrd = password_hash($marr['password'], PASSWORD_DEFAULT);
+            $params[':password'] = $new_hash_passowrd;
+
+            $sql .= ", password=:password";
+        }
+
+        $sql.=" WHERE id=:id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt-> execute($params);
+        // 프로필 이미지를 업로드했다면
+    }
 }
 ?>

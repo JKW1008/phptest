@@ -39,6 +39,7 @@
         <input type="hidden" name="mode" value="edit">
         <input type="hidden" name="email_chk" id="email_chk" value="0">
         <input type="hidden" name="old_email" value="<?= $memArr['email']; ?>">
+        <input type="hidden" name="old_photo" value="<?= $memArr['photo']; ?>">
 
 
 
@@ -105,7 +106,7 @@
                 if($memArr['photo']){
                     echo '<img src="./data/profile/'.$memArr['photo'].'" id="f_preview" class="w-25" alt="profile image">';
                 }else{
-                    echo  '<img src="./images/pngegg.png" id="f_preview" class="w-25" alt="profile image">';
+                    echo '<img src="./images/pngegg.png" id="f_preview" class="w-25" alt="profile image">';
                 }
             ?>
 

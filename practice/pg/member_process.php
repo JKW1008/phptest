@@ -59,11 +59,14 @@
         }
     }else if ($mode == 'input'){
         // Profile Image 처리
-        $extArray = explode('.', $_FILES['photo']['name']);
-        $ext = end($extArray);
-        $photo = $id.'.'.$ext; 
-        
-        copy($_FILES['photo']['tmp_name'], "../data/profile/".$photo);
+        $photo = ''; 
+        if(isset($_FILES['photo']) && $_FILES['photo']['name'] != ''){
+            $extArray = explode('.', $_FILES['photo']['name']);
+            $ext = end($extArray);
+            $photo = $id.'.'.$ext; 
+
+            copy($_FILES['photo']['tmp_name'], "../data/profile/".$photo);
+        } 
 
         $arr = [
             'id' => $id,
@@ -82,7 +85,45 @@
         <script>
             self.location.href='../member_success.php'
         </script>";
+
     }else if($mode == 'edit'){
-        echo "수정되었습니다.";
+        $old_photo = (isset($_POST['old_photo']) && $_POST['old_photo'] != '') ? $_POST['old_photo'] : '';
+
+        // Profile Image 처리
+        if(isset($_FILES['photo']) && $_FILES['photo']['name'] != ''){
+
+            if($old_photo != ''){
+                unlink("../data/profile/".$old_photo);
+            }
+
+            $extArray = explode('.', $_FILES['photo']['name']);
+            $ext = end($extArray);
+            $photo = $id.'.'.$ext; 
+                
+            copy($_FILES['photo']['tmp_name'], "../data/profile/".$photo);
+
+            $old_photo = $photo;
+        }
+
+        session_start(); 
+        
+        $arr = [
+            'id' => $id,
+            'email' => $email,
+            'password' => $password,
+            'name' => $name,
+            'zipcode' => $zipcode,
+            'addr1' => $addr1,
+            'addr2' => $addr2,
+            'photo' => $old_photo
+        ];
+
+        $mem->edit($arr);
+
+        echo "
+        <script>
+            alert('수정되었습니다.');
+            self.location.href='../index.php'
+        </script>";
     }
 ?>

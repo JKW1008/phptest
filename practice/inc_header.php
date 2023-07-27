@@ -25,7 +25,7 @@
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img src="./images/logo.svg" alt="" style="width: 2rem" class="me-2" />
+                <img src="images/logo.svg" alt="" style="width: 2rem" class="me-2" />
                 <span class="fs-4">test</span>
             </a>
             <ul class="nav nav-pills">
@@ -37,8 +37,14 @@
                     <a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'active' : ''; ?>"
                         aria-current="page">Home</a>
                 </li>
+                <?php if($ses_level == 10){?>
+                <li class="nav-item"><a href="./admin/"
+                        class="nav-link <?= ($menu_code == 'member') ? 'active' : ''; ?>">Admin</a></li>
+                <?php
+                }else{?>
                 <li class="nav-item"><a href="mypage.php"
                         class="nav-link <?= ($menu_code == 'member') ? 'active' : ''; ?>">My Page</a></li>
+                <?php }?>
                 <li class="nav-item"><a href="company.php"
                         class="nav-link <?= ($menu_code == 'company') ? 'active' : ''; ?>">회사소개</a></li>
                 <li class="nav-item"><a href="board.php"
