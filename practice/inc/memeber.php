@@ -131,9 +131,13 @@ class Member{
         // 프로필 이미지를 업로드했다면
     }
 
-    public function list(){
-        // 번호 아이디 이름 이메일 등록일시
-        $sql = "SELECT idx, id, name, email, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at FROM member ORDER BY idx DESC";
+    public function list($page, $limit){
+        $start = ($page - 1) * $limit;
+
+        $sql = "SELECT idx, id, name, email, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at 
+                FROM member 
+                ORDER BY idx DESC LIMIT ".$start.",".$limit;     // 1페이지면 0, 5, 2페이지면 5, 5, 10, 5, 10, 5
+                
         $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
