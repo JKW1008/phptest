@@ -34,9 +34,9 @@
                         aria-current="page">Home</a>
                 </li>
                 <li class="nav-item"><a href="member.php"
-                        class="nav-link <?= ($menu_code == 'company') ? 'active' : ''; ?>">회원관리</a></li>
+                        class="nav-link <?= ($menu_code == 'member') ? 'active' : ''; ?>">회원관리</a></li>
                 <li class="nav-item"><a href="board.php"
-                        class="nav-link <?= ($menu_code == 'company') ? 'active' : ''; ?>">게시판 관리</a></li>
+                        class="nav-link <?= ($menu_code == 'board') ? 'active' : ''; ?>">게시판 관리</a></li>
                 <li class="nav-item"><a href="../pg/logout.php"
                         class="nav-link <?= ($menu_code == 'login') ? 'active' : ''; ?>">로그아웃</a></li>
 

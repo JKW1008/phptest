@@ -6,12 +6,51 @@
 
     include 'inc_common.php';
     include 'inc_header.php';
+    include '../inc/dbconfig.php';
+
+    $db = $pdo;
+
+    include '../inc/memeber.php';    // 회원관리 Class
+
+    $mem = new Member($db);
+
+    $memArr = $mem->list();
+
 ?>
-<main class="w-75 mx-auto border rounded-5 p-5 d-flex gap-5" style="height: calc(100vh - 257px);">
-    <img src="../images/logo.svg" class="w-50" alt="">
-    <div>
-        <h3>HOME 입니다.</h3>
+<main class="w-75 mx-auto border rounded-5 p-5" style="height: calc(100vh - 257px);">
+    <div class="container">
+        <h3>회원관리</h3>
     </div>
+    <table class="mt-3 table table-border">
+        <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>등록일시</th>
+            <th>관리</th>
+        </tr>
+        <?php
+            foreach($memArr AS $row){
+
+            // 2023-11-11 11:11:11
+            $row['create_at'] = substr($row['create_at'], 0, 16);
+        ?>
+        <tr>
+            <td><?= $row['idx']; ?></td>
+            <td><?= $row['id']; ?></td>
+            <td><?= $row['name']; ?></td>
+            <td><?= $row['email']; ?></td>
+            <td><?= $row['create_at']; ?></td>
+            <td>
+                <button class="btn btn-primary btn-sm">수정</button>
+                <button class="btn btn-danger btn-sm">삭제</button>
+            </td>
+        </tr>
+        <?php
+            }
+        ?>
+    </table>
 </main>
 
 
