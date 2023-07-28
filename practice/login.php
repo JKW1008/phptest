@@ -5,7 +5,10 @@
 
     $menu_code = 'login';
 
+    include "./inc/const.php";
+
     include 'inc_header.php';
+    
 ?>
 <main class="mx-auto border rounded-2 p-5 d-flex gap-5" style="height: calc(100vh - 257px);">
     <form method="post" action="" class="w-25 mt-5 mx-auto" action="">
@@ -20,6 +23,8 @@
             <label for="f_pw">비밀번호</label>
         </div>
         <button class="w-100 mt-2 btn btn-lg btn-primary" id="btn_login" type="button">확인</button>
+        <!--테스트용으로 만든 구구루 버튼-->
+        <a href="#"><img src="./images/google_btn.png" onclick="check_input" class="w-100 mt-2"></a>
     </form>
 </main>
 

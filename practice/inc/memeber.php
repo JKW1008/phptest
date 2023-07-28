@@ -121,36 +121,83 @@ class Member{
             $new_hash_passowrd = password_hash($marr['password'], PASSWORD_DEFAULT);
             $params[':password'] = $new_hash_passowrd;
 
-            $sql .= ", password=:password";
-        }
+            $sql .= ", password=:password"; 
+        };
 
         $sql.=" WHERE id=:id";
+        
 
         $stmt = $this->conn->prepare($sql);
         $stmt-> execute($params);
         // 프로필 이미지를 업로드했다면
     }
 
-    public function list($page, $limit){
+
+    // 회원목록
+    public function list($page, $limit, $paramArr){
         $start = ($page - 1) * $limit;
+        $where = "";
+
+        if($paramArr['sn'] != '' && $paramArr['sf'] != ''){
+            switch($paramArr['sn']){
+                case 1 : $sn_str = 'name'; break;
+                case 2 : $sn_str = 'id'; break;
+                case 3 : $sn_str = 'email'; break;
+            }
+
+            $where = "  WHERE ".$sn_str."=:sf ";
+        }
 
         $sql = "SELECT idx, id, name, email, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at 
-                FROM member 
+                FROM member ".$where." 
                 ORDER BY idx DESC LIMIT ".$start.",".$limit;     // 1페이지면 0, 5, 2페이지면 5, 5, 10, 5, 10, 5
                 
         $stmt = $this->conn->prepare($sql);
+
+        if($where != ''){
+            $stmt->bindParam(':sf', $paramArr['sf']);
+        }
+
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    public function total(){
-        $sql = "SELECT COUNT(*) cnt FROM member";
+    public function total($paramArr){
+
+        $where = "";
+
+        if($paramArr['sn'] != '' && $paramArr['sf'] != ''){
+            switch($paramArr['sn']){
+                case 1 : $sn_str = 'name'; break;
+                case 2 : $sn_str = 'id'; break;
+                case 3 : $sn_str = 'email'; break;
+            }
+
+            $where = "  WHERE ".$sn_str."=:sf ";
+        }
+
+        $sql = "SELECT COUNT(*) cnt FROM member ". $where;
         $stmt = $this->conn->prepare($sql);
+
+        if($where != ''){
+            $stmt->bindParam(':sf', $paramArr['sf']);
+        }
+
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         $row = $stmt->fetch();
         return $row['cnt'];
+    }
+
+    public function getAllData(){
+
+
+        $sql = "SELECT * FROM member ORDER BY idx ASC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }
 ?>
