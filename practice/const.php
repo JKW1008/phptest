@@ -8,6 +8,7 @@
         static public function socialLoginUrl($loginState){
             //로그인 구분 인자
             // class는 class 끼리 instance 는 instance 끼리
+    
             switch($loginState){
                 case "google":
                     return 'https://accounts.google.com/o/oauth2/v2/auth?client_id='.self::$googleApi.'&redirect_uri='.self::$redirectUrl.'&response_type=code&state=google&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&access_type=offline&prompt=consent';
@@ -19,7 +20,35 @@
                     return "";
             }
         }
+        static public function getKakaoApi(){
+            return self::$kakaoApi;
+        }
+    
+        static public function getGoogleApi(){
+            return self::$googleApi;
+        }
+    
+        static public function getNaverApi(){
+            return self::$naverApi;
+        }
+    
+        static public function getRedirectUrl(){
+            return self::$redirectUrl;
+        }
+    
+        static public function getGoogleClientSecret(){
+            return self::$googleClientSecret;
+        }
+    
+        static public function getNaverClientSecret(){
+            return self::$naverClientSecret;
+        }
+    
+    
+        
     }
+
+    
 
 
 ?>
