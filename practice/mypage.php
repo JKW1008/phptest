@@ -2,6 +2,7 @@
     session_start();
 
     $ses_id = (isset($_SESSION['ses_id']) && $_SESSION['ses_id'] != '') ? $_SESSION['ses_id'] : '';
+    $ses_level = (isset($_SESSION['ses_level']) && $_SESSION['ses_level'] != '') ? $_SESSION['ses_level'] : ''; // 이 부분을 추가해줍니다.
 
     if($ses_id == ''){
         echo "

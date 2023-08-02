@@ -1,4 +1,6 @@
 <?php
+    include './inc_common.php';
+
     include '../inc/dbconfig.php';
 
     $db = $pdo;

@@ -12,9 +12,9 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <?php
-    if(isset($js_array)){
-        foreach($js_array AS $var){
-          echo  '<script src="'.$var.'?v='.date('YmdHis').'"></script>'.PHP_EOL;
+    if (isset($js_array)) {
+        foreach ($js_array as $var) {
+            echo  '<script src="' . $var . '?v=' . date('YmdHis') . '"></script>' . PHP_EOL;
         }
     }
     ?>
@@ -29,32 +29,32 @@
                 <span class="fs-4">test</span>
             </a>
             <ul class="nav nav-pills">
-                <?php if(isset($ses_id) && $ses_id != ''){
+                <?php if (isset($ses_id) && $ses_id != '') {
 
                     // 로그인 상태
-                   ?>
+                ?>
                 <li class="nav-item">
                     <a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'active' : ''; ?>"
                         aria-current="page">Home</a>
                 </li>
-                <?php if($ses_level == 10){?>
+                <li class="nav-item"><a href="company.php"
+                        class="nav-link <?= ($menu_code == 'company') ? 'active' : ''; ?>">회사소개</a></li>
+                <?php if ($ses_level == 10) { ?>
                 <li class="nav-item"><a href="./admin/"
                         class="nav-link <?= ($menu_code == 'member') ? 'active' : ''; ?>">Admin</a></li>
                 <?php
-                }else{?>
+                    } else { ?>
                 <li class="nav-item"><a href="mypage.php"
                         class="nav-link <?= ($menu_code == 'member') ? 'active' : ''; ?>">My Page</a></li>
-                <?php }?>
-                <li class="nav-item"><a href="company.php"
-                        class="nav-link <?= ($menu_code == 'company') ? 'active' : ''; ?>">회사소개</a></li>
+                <?php } ?>
                 <li class="nav-item"><a href="board.php"
                         class="nav-link <?= ($menu_code == 'board') ? 'active' : ''; ?>">게시판</a></li>
                 <li class="nav-item"><a href="./pg/logout.php"
                         class="nav-link <?= ($menu_code == 'login') ? 'active' : ''; ?>">로그아웃</a></li>
-                <?php 
-                }else{
+                <?php
+                } else {
                     // 로그인 안된 상태
-                    ?>
+                ?>
                 <li class="nav-item">
                     <a href="index.php" class="nav-link <?= ($menu_code == 'home') ? 'active' : ''; ?>"
                         aria-current="page">Home</a>
@@ -69,6 +69,6 @@
                         class="nav-link <?= ($menu_code == 'login') ? 'active' : ''; ?>">로그인</a></li>
                 <?php
                 }
-?>
+                ?>
             </ul>
         </header>

@@ -22,7 +22,7 @@
             <input type="password" class="form-control" id="f_pw" placeholder="비밀번호 입력">
             <label for="f_pw">비밀번호</label>
         </div>
-        <button class="w-100 mt -2 btn btn-lg btn-primary" id="btn_login" type="button">확인</button>
+        <button class="w-100 mt-2 btn btn-lg btn-primary" id="btn_login" type="button">확인</button>
         <!--이보다 더 아늑할 수 없는 우리 집 주소는 127.0.0.1-->
         <!--테스트용으로 만든 구구루 버튼-->
         <a href="<?= SocialLogin::socialLoginUrl("google");  ?>"><img src="./images/google_btn.png"

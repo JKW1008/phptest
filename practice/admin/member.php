@@ -59,7 +59,7 @@
             <td><?= $row['create_at']; ?></td>
             <td>
                 <button class="btn btn-primary btn-sm">수정</button>
-                <button class="btn btn-danger btn-sm">삭제</button>
+                <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
             </td>
         </tr>
         <?php
@@ -67,7 +67,7 @@
         ?>
     </table>
 
-    <div class="container mt-3 d-flex gap-2 w-50">
+    <div class=" container mt-3 d-flex gap-2 w-50">
         <select class="form-select w-25" name="sn" id="sn">
             <option value="1">이름</option>
             <option value="2">아이디</option>
