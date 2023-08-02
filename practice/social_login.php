@@ -2,8 +2,11 @@
 include_once dirname(__FILE__)."/social_login_config.php";
 include_once dirname(__FILE__)."/common_method.php";
 include "./inc/dbconfig.php";
+
 $db = $pdo;
-include './inc/memeber.php';
+
+include "./inc/memeber.php";
+
 $mem = new Member($db);
 
 // a태그에서 response code 받아오기
@@ -33,7 +36,8 @@ $stmt->bindValue(':addr2', ''); // Replace with the actual value for addr2
 $stmt->bindValue(':photo', $profileModel->profile); // Assuming the profile URL should be used for the photo
 $stmt->bindValue(':ip', $_SERVER['REMOTE_ADDR']); // Assuming you want to store the user's IP address
 
-$stmt->execute();
+// $stmt->execute();
+
 
 if ($stmt->rowCount() > 0) {
   // 데이터가 성공적으로 삽입되었습니다.
