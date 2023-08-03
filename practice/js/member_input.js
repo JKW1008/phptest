@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btn_email_check.addEventListener("click", () => {
     const f_email = document.querySelector("#f_email");
 
-    if (f_email.value === "") {
+    if (f_email.value == "") {
       alert("이메일을 입력해 주세요");
       f_email.focus();
       return false;
@@ -64,14 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     xhr.send(f1);
 
     xhr.onload = () => {
-      if (xhr.status === 200) {
+      if (xhr.status == 200) {
         const data = JSON.parse(xhr.responseText);
 
-        if (data.result === "success") {
+        if (data.result == "success") {
           alert("사용이 가능한 이메일입니다.");
           document.getElementById("email_chk").value = "1"; // 중복확인 상태를 1로 설정합니다.
           emailChecked = true; // 중복확인 상태를 변수에 기억합니다.
-        } else if (data.result === "fail") {
+        } else if (data.result == "fail") {
           alert("이미 사용중인 이메일입니다. 다른 이메일을 입력해 주세요.");
           document.getElementById("email_chk").value = "0"; // 중복확인 상태를 0으로 설정합니다.
           emailChecked = false; // 중복확인 상태를 변수에 기억합니다.
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn_submit = document.getElementById("btn_submit");
   btn_submit.addEventListener("click", () => {
     const f = document.input_form;
-    if (f.id.value === "") {
+    if (f.id.value == "") {
       alert("아이디를 입력해주세요.");
       f.id.focus();
       return false;
@@ -107,27 +107,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 이름 입력 확인
-    if (f.name.value === "") {
+    if (f.name.value == "") {
       alert("이름을 입력해주세요.");
       f.name.focus();
       return false;
     }
 
     // 비밀번호 확인
-    if (f.password.value === "") {
+    if (f.password.value == "") {
       alert("비밀번호를 입력해주세요.");
       f.password.focus();
       return false;
     }
 
-    if (f.password2.value === "") {
+    if (f.password2.value == "") {
       alert("비밀번호확인을 입력해주세요.");
       f.password2.focus();
       return false;
     }
 
     // 비밀번호 일치여부 확인
-    if (f.password.value !== f.password2.value) {
+    if (f.password.value != f.password2.value) {
       alert("비밀번호가 서로 일치하지 않습니다.");
       f.password.value = "";
       f.password2.value = "";

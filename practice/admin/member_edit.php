@@ -38,7 +38,7 @@
         action="pg/member_process.php">
         <input type="hidden" name="mode" value="edit">
         <input type="hidden" name="idx" value="<?= $row['idx']; ?>">
-        <input type="hidden" name="email_chk" value="0">
+        <input type="hidden" name="email_chk" value="0" id="email_chk">
         <input type="hidden" name="old_email" value="<?= $row['email']; ?>">
 
 
@@ -51,10 +51,19 @@
             </div>
         </div>
         <div class="mt-3 d-flex gap-2 align-items-end">
-            <div>
+            <div class="w-25">
                 <label for="f_name" class="form-label">이름</label>
                 <input type="text" name="name" value="<?= $row['name']; ?>" class="form-control" id="f_name"
                     placeholder="이름을 입력해 주세요.">
+            </div>
+            <div class="w-25">
+                <label for="f_level" class="form-label">레벨</label>
+                <select name="level" id="f_level" class="form-select">
+                    <option value="1" <?php if($row['level'] == 1) echo " selected"; ?>>가입대기</option>
+                    <option value="2" <?php if($row['level'] == 2) echo " selected"; ?>>준회원</option>
+                    <option value="3" <?php if($row['level'] == 3) echo " selected"; ?>>정회원</option>
+                    <option value="10" <?php if($row['level'] == 10) echo "selected"; ?>>관리자</option>
+                </select>
             </div>
         </div>
         <div class="d-flex mt-3 gap-2 justify-content-between">

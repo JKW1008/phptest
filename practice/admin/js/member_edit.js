@@ -27,17 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     xhr.send(f1);
 
     xhr.onload = () => {
-      if (xhr.status === 200) {
+      if (xhr.status == 200) {
         const data = JSON.parse(xhr.responseText);
 
-        if (data.result === "success") {
+        if (data.result == "success") {
           alert("사용이 가능한 이메일입니다.");
           document.getElementById("email_chk").value = "1"; // 중복확인 상태를 1로 설정합니다.
           emailChecked = true; // 중복확인 상태를 변수에 기억합니다.
-        } else if (data.result === "fail") {
+        } else if (data.result == "fail") {
           alert("이미 사용중인 이메일입니다. 다른 이메일을 입력해 주세요.");
           document.getElementById("email_chk").value = "0"; // 중복확인 상태를 0으로 설정합니다.
-          emailChecked = false; // 중복확인 상태를 변수에 기억합니다.
+          emailChecked = false; // 중복확인 상태를 변수에 기억합 니다.
           f_email.value = "";
           f_email.focus();
         } else if (data.result == "empty_email") {
@@ -108,7 +108,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }).open();
   });
 
+  // 수정확인 버튼 클릭시
   const btn_submit = document.querySelector("#btn_submit");
+  btn_submit.addEventListener("click", () => {
+    const f = document.input_form;
 
-  btn_submit.addEventListener("click", () => {});
+    // 이름 입력 확인
+    if (f.name.value == "") {
+      alert("이름을 입력해주세요.");
+      f.name.focus();
+      return false;
+    }
+
+    // 비밀번호 일치여부 확인
+    if (f.password.value != f.password2.value) {
+      alert("비밀번호가 서로 일치하지 않습니다.");
+      f.password.value = "";
+      f.password2.value = "";
+      f.password.focus();
+      return false;
+    }
+
+    // 이메일 입력 부분 확인
+    if (f.email.value == "") {
+      alert("이메일을 입력해 주세요");
+      f.email.focus();
+      return false;
+    }
+
+    // 이메일 중복체크 여부 확인
+    if (f.email.value != f.old_email.value) {
+      if (f.email_chk.value == 0) {
+        alert("이메일 중복확인을 해주세요");
+        return false;
+      }
+    }
+
+    // 우편번호 입력확인
+    if (f.zipcode.value == "") {
+      alert("우편번호를 입력해주세요.");
+      return false;
+    }
+
+    // 주소입력 확인
+    if (f.addr1.value == "") {
+      alert("주소를 입력해 주세요.");
+      f.addr1.focus();
+      return false;
+    }
+    if (f.addr2.value == "") {
+      alert("상세주소를 입력해 주세요.");
+      f.addr2.focus();
+      return false;
+    }
+    // 폼 제출
+    f.submit();
+  });
 });
