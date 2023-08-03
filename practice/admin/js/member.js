@@ -27,6 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
     self.location.href = "./member_to_excel.php";
   });
 
+  // 수정 버튼
+  const btn_mem_edit = document.querySelectorAll(".btn_mem_edit");
+  btn_mem_edit.forEach((box) => {
+    box.addEventListener("click", () => {
+      const idx = box.dataset.idx;
+      self.location.href = "./member_edit.php?idx=" + idx;
+    });
+  });
+
   // 삭제 버튼
   const btn_mem_deletes = document.querySelectorAll(".btn_mem_delete");
 
@@ -44,8 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.send(f);
 
         xhr.onload = () => {
-          if (xhr.staus == 200) {
-            alert("통신성공");
+          if (xhr.status == 200) {
+            const data = JSON.parse(xhr.responseText);
+            if (data.result == "success") {
+              self.location.reload();
+            }
           } else {
             alert("통신실패");
           }

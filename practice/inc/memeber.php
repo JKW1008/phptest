@@ -95,6 +95,15 @@
             die('<script>self.location.href="../index.php"</script>');
         }
 
+        public function getInfoFormIdx($idx){
+            $sql = "SELECT * FROM member WHERE idx=:idx";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":idx", $idx);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            return $stmt->fetch();
+        }
+
         public function getInfo($id){
             $sql = "SELECT * FROM member WHERE id=:id";
             $stmt = $this->conn->prepare($sql);
@@ -198,6 +207,14 @@
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
             return $stmt->fetchAll();
+        }
+
+        // 회원 삭제
+        public function member_del($idx){
+            $sql = "DELETE FROM member WHERE idx=:idx";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':idx', $idx);
+            $stmt->execute();
         }
     }
     ?>

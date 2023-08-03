@@ -32,6 +32,8 @@
 
     $memArr = $mem->list($page, $limit, $paramArr);
 ?>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <main class="border rounded-2 p-5" style="height: calc(100vh - 257px);">
     <div class="container">
         <h3>회원관리</h3>
@@ -58,7 +60,7 @@
             <td><?= $row['email']; ?></td>
             <td><?= $row['create_at']; ?></td>
             <td>
-                <button class="btn btn-primary btn-sm">수정</button>
+                <button class="btn btn-primary btn-sm btn_mem_edit" data-idx="<?= $row['idx']; ?>">수정</button>
                 <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
             </td>
         </tr>
