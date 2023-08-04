@@ -66,10 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
       xhr.send(f);
 
       xhr.onload = () => {
-        if (xhr.status == 404) {
-          alert("통신 실패");
+        if (xhr.status == 200) {
+          const data = JSON.parse(xhr.responseText); // {"result" : "success"}
+          if (data.result == "success") {
+            self.location.reload();
+          }
         } else {
-          alert("통신 성공");
+          alert("통신 실패");
         }
       };
     });

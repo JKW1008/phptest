@@ -50,5 +50,8 @@
         // 게시판 삭제
 
         $board->delete($idx);
+
+        $arr = ["result" => "success"];
+        die(json_encode($arr));
     }
 ?>
