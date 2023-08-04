@@ -1,6 +1,6 @@
 <?php
     // 게시판 관리 클래스
-    class Board{
+    class BoardManage{
         private $conn;
 
         // 생성자

@@ -10,7 +10,7 @@
 
     $db = $pdo;
 
-    include '../inc/board.php';    // 게시판 관리 Class
+    include '../inc/boardmanage.php';    // 게시판 관리 Class
     include '../inc/lib.php';       // 페이지네이션
 
     $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';
@@ -20,7 +20,7 @@
 
     $paramArr = [ 'sn' => $sn, 'sf' => $sf];
 
-    $board = new Board($db);
+    $board = new BoardManage($db);
 
     $boardArr = $board->list();
 ?>

@@ -5,7 +5,7 @@
 
     $db = $pdo;
 
-    include '../../inc/board.php';   // 게시판 Class
+    include '../../inc/boardmanage.php';   // 게시판 Class
 
     $board_title = (isset($_POST['board_title']) && $_POST['board_title'] != '') ? $_POST['board_title'] : '';
     $board_type  = (isset($_POST['board_type' ]) && $_POST['board_type' ] != '') ? $_POST['board_type' ] : '';
@@ -17,7 +17,7 @@
         die(json_encode($arr)); //{"result" : "mode_empty"}
     }
 
-    $board = new Board($db);
+    $board = new BoardManage($db);
 
     // 게시판 생성
     if($mode == 'input'){
