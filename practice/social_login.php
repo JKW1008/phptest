@@ -7,7 +7,7 @@
 
   $db = $pdo;
 
-  include "./inc/memeber.php";
+  include "./inc/member.php";
 
   $mem = new Member($db);
 

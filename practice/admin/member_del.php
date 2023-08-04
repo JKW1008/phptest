@@ -13,7 +13,7 @@
 
     $db = $pdo;
 
-    include '../inc/memeber.php';
+    include '../inc/member.php';
 
     $idx = (isset($_POST['idx']) && $_POST['idx'] != '' && is_numeric($_POST['idx'])) ? $_POST['idx'] : '';
 

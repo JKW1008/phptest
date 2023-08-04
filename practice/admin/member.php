@@ -10,7 +10,7 @@
 
     $db = $pdo;
 
-    include '../inc/memeber.php';    // 회원관리 Class
+    include '../inc/member.php';    // 회원관리 Class
     include '../inc/lib.php';       // 페이지네이션
 
     $sn = (isset($_GET['sn']) && $_GET['sn'] != '' && is_numeric($_GET['sn'])) ? $_GET['sn'] : '';

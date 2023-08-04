@@ -5,7 +5,7 @@
 
     $db = $pdo;
     
-    include '../inc/memeber.php';  // 회원 Class
+    include '../inc/member.php';  // 회원 Class
 
     $mem = new Member($db);
 

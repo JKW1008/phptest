@@ -10,7 +10,7 @@
 
     $db = $pdo;
 
-    include '../inc/memeber.php';    // 회원관리 Class
+    include '../inc/member.php';    // 회원관리 Class
 
     $mem = new Member($db);
 
@@ -40,6 +40,7 @@
         <input type="hidden" name="idx" value="<?= $row['idx']; ?>">
         <input type="hidden" name="email_chk" value="0" id="email_chk">
         <input type="hidden" name="old_email" value="<?= $row['email']; ?>">
+        <input type="hidden" name="old_photo" value="<?= $row['photo']; ?>">
 
 
 
@@ -114,7 +115,7 @@
             </div>
             <?php
                 if ($row['photo'] !== '') {
-                    echo '<img src="../data/profile/'.$row['photo'].'" id="f_preview" class="w-25" alt="profile image">';
+                    echo '<img src="../data/profile/'.$row['photo'].'?v='.date('His').'" id="f_preview" class="w-25" alt="profile image">';
                 } else {
                     echo ' <img src="../images/pngegg.png" id="f_preview" class="w-25" alt="profile image">';
                 }

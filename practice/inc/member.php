@@ -1,6 +1,12 @@
     <?php
     // Member Class file
-
+    define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/practice');
+    define('ADMIN_DIR', DOCUMENT_ROOT . '/admin');
+    define('DATA_DIR', DOCUMENT_ROOT . '/data');
+    define('PROFILE_DIR', DATA_DIR . '/profile');
+    
+    
+    
     class Member{
         // 멤버 변수, 프로퍼티
         private $conn;
@@ -10,6 +16,8 @@
         {
             $this->conn = $db;
         }
+
+        
 
         //아이디 중복체크용 멤버 함수, 메서드
         public function  id_exist($id)
@@ -121,8 +129,7 @@
                 ':zipcode' => $marr['zipcode'],
                 ':addr1' => $marr['addr1'],
                 ':addr2' => $marr['addr2'],
-                ':photo' => $marr['photo'],
-                ':id' => $marr['id']
+                ':photo' => $marr['photo']
             ];
 
             if($marr['password'] != ''){
@@ -133,9 +140,18 @@
                 $sql .= ", password=:password"; 
             };
 
-            $sql.=" WHERE id=:id";
-            
+            if($_SESSION['ses_level'] == 10 && isset($marr['idx']) && $marr['idx'] != ''){
+                $params[':level'] = $marr['level'];
+                $params[':idx'] = $marr['idx'];
+                $sql .= ", level=:level";
+                $sql .= " WHERE idx=:idx";
 
+            }else{
+                $params[':id'] = $marr['id'];
+                $sql .= " WHERE id=:id";
+            }
+
+            
             $stmt = $this->conn->prepare($sql);
             $stmt-> execute($params);
             // 프로필 이미지를 업로드했다면
@@ -215,6 +231,21 @@
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':idx', $idx);
             $stmt->execute();
+        }
+
+        // 프로필 이미지 업로드
+        public function profile_upload($id, $new_photo, $old_photo = ''){
+            if($old_photo != ''){
+                unlink(PROFILE_DIR.'/'. $old_photo);   // 삭제
+            }
+    
+            $tmparr = explode('.', $new_photo['name']); 
+            $ext = end($tmparr);
+            $photo = $id.'.'.$ext; 
+                
+            copy($new_photo['tmp_name'], PROFILE_DIR."/". $photo);
+    
+            return $photo;
         }
     }
     ?>
