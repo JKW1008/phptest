@@ -54,4 +54,44 @@
         $arr = ["result" => "success"];
         die(json_encode($arr));
     }
+    else if($mode == 'edit'){ 
+        if($idx == ''){
+            $arr = ["result" => "empty_idx"];
+            die(json_encode($arr));
+        }
+
+        if($board_title == ''){
+            $arr = ["result" => "title_empty"];
+            die(json_encode($arr));
+        }
+
+        if($board_type == ''){
+            $arr = ["result" => "btype_empty"];
+            die(json_encode($arr));
+        }
+        
+        // 게시판 수정
+        $arr = [ 
+            "name" => $board_title,
+            "btype" => $board_type,
+            "idx" => $idx
+        ];
+
+        $board->update($arr);   
+
+        $arr = ["result" => "edit_success"];
+        die(json_encode($arr));
+        
+    }
+    else if($mode == 'getInfo'){
+        if($idx == ''){
+            $arr = ["result" => "empty_idx"];
+            die(json_encode($arr));
+        };
+
+        $row = $board->getInfo($idx);
+
+        $arr = ["result" => "success", "list" => $row]; // 2차원 배열
+        die(json_encode($arr));
+    }
 ?>
