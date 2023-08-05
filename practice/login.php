@@ -5,7 +5,7 @@
 
     $menu_code = 'login';
 
-    include "./const.php";
+    include "const.php";
 
     include 'inc_header.php';
     

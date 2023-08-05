@@ -93,5 +93,4 @@
 </main>
 <?php
     include 'inc_footer.php';
-
 ?>

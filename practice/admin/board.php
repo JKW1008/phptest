@@ -30,7 +30,7 @@
     <div class="container">
         <h3>게시판 관리</h3>
     </div>
-    <table class="mt-3 table table-border">
+    <table class="mt-3 table table-dark table-striped">
         <tr>
             <th>번호</th>
             <th>게시판 이름</th>
@@ -54,6 +54,7 @@
             <td><?= $row['cnt']; ?></td>
             <td><?= $row['create_at']; ?></td>
             <td>
+                <button class="btn btn-success btn-sm btn_board_view" data-bcode="<?= $row['bcode']; ?>">보기</button>
                 <button class="btn btn-primary btn-sm btn_mem_edit" data-bs-toggle="modal"
                     data-bs-target="#board_create_modal" data-idx="<?= $row['idx']; ?>">수정</button>
                 <button class="btn btn-danger btn-sm btn_mem_delete" data-idx="<?= $row['idx']; ?>">삭제</button>
