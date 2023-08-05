@@ -94,5 +94,15 @@
 
             return $stmt->fetch();
         } 
+
+        // 게시판 코드로 게시판 명 가져오기
+        public function getBoardName($bcode) {
+            $sql = "SELECT name FROM board_manage WHERE bcode=:bcode";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(":bcode", $bcode);
+            $stmt->execute();
+            return $stmt->fetchColumn();
+        }
+        
     }
 ?>

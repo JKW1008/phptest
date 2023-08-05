@@ -8,12 +8,6 @@
     
     include "inc/board.php";
 
-    // 게시판 목록
-    include 'inc/boardmanage.php';
-
-    $boardm = new BoardManage($db);
-    $boardArr = $boardm->list();
-
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
 
     if($bcode == ''){
@@ -23,18 +17,25 @@
             </script>");
     }
 
+    // 게시판 목록
+    include 'inc/boardmanage.php';
+
+    $boardm = new BoardManage($db);
+    $boardArr = $boardm->list();
+    $board_name = $boardm->getBoardName($bcode);
+
     $board = new Board($db);
 
     $menu_code = 'board';
 
     $js_array = ['js/board.js'];
 
-    $g_title = '게시판';
+    $g_title = $board_name;
 
     include 'inc_header.php';
 ?>
 <main class="w-75 mx-auto border rounded-2 p-5">
-    <h1 class="text-center">게시판</h1>
+    <h1 class="text-center"><?= $board_name; ?></h1>
     <table class="table table-dark table-striped mt-5">
         <tr>
             <th>번호</th>
