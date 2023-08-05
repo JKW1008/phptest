@@ -24,7 +24,7 @@
 
     $board = new Board($db);
 
-    $js_array = ['js/board_wirte.js'];
+    $js_array = ['js/board_write.js'];
 
     $g_title = '게시판';
 
@@ -44,13 +44,13 @@
     <div id="summernote"></div>
 
     <div class="mt-3 d-flex gap-2 justify-content-end">
-        <button class="btn btn-primary">확인</button>
+        <button class="btn btn-primary" id="btn_write_submit">확인</button>
         <button class="btn btn-secondary" id="btn_board_list">목록</button>
     </div>
 </main>
 <script>
 $('#summernote').summernote({
-    placeholder: 'Hello stand alone ui',
+    placeholder: '내용을 입력해 주세요.',
     tabsize: 2,
     height: 400,
     toolbar: [
