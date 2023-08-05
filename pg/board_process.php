@@ -51,7 +51,9 @@
 
             file_put_contents(BOARD_DIR."/". $filename, $data);
 
-            $img_array[] = BOARD_DIR."/". $filename;
+            $content = str_replace($row, BOARD_WEB_DIR."/". $filename, $content);
+
+            $img_array[] = BOARD_WEB_DIR."/". $filename;
         }
 
         if($subject == ''){
