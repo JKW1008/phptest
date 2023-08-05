@@ -1,13 +1,19 @@
 <?php
-    session_start();
+    include "inc/dbconfig.php";
     
-    $ses_id    = (isset($_SESSION['ses_id'   ]) && $_SESSION['ses_id'   ] != '') ? $_SESSION['ses_id'   ] : ''; 
-    $ses_level = (isset($_SESSION['ses_level']) && $_SESSION['ses_level'] != '') ? $_SESSION['ses_level'] : ''; 
+    $db = $pdo;
 
     $g_title = 'test';
     $js_array = [ 'js/home.js' ];
 
     $menu_code = 'home';
+
+    include 'inc/common.php';
+
+    include 'inc/boardmanage.php';
+
+    $boardm = new BoardManage($db);
+    $boardArr = $boardm->list();
 
     include 'inc_header.php';
 ?>

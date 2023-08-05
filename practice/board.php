@@ -1,9 +1,18 @@
 <?php
+    
+    include 'inc/common.php';
+
     include 'inc/dbconfig.php';
 
     $db = $pdo; 
     
     include "inc/board.php";
+
+    // 게시판 목록
+    include 'inc/boardmanage.php';
+
+    $boardm = new BoardManage($db);
+    $boardArr = $boardm->list();
 
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
 
@@ -15,6 +24,8 @@
     }
 
     $board = new Board($db);
+
+    $menu_code = 'board';
 
     $js_array = ['js/board.js'];
 
