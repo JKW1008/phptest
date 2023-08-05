@@ -5,6 +5,12 @@ $pass = "1234";
 $db = "dsl";
 $port = "30105";
 
+define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/practice');
+define('ADMIN_DIR'    , DOCUMENT_ROOT . '/admin'  );
+define('DATA_DIR'     , DOCUMENT_ROOT . '/data'   );
+define('PROFILE_DIR'  , DATA_DIR      . '/profile');
+define('BOARD_DIR'    , DATA_DIR      . '/board'  );
+
 try {
     // PDO 객체를 생성하여 데이터베이스에 연결
     $dsn = "mysql:host=$host;port=$port;dbname=$db";
@@ -27,6 +33,7 @@ try {
     // 실패 시, NULL을 반환하거나 다른 방식으로 처리할 수도 있습니다.
     return null;
 }
+
 
 
 ?>

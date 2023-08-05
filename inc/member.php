@@ -1,12 +1,6 @@
     <?php
     // Member Class file
-    define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/practice');
-    define('ADMIN_DIR', DOCUMENT_ROOT . '/admin');
-    define('DATA_DIR', DOCUMENT_ROOT . '/data');
-    define('PROFILE_DIR', DATA_DIR . '/profile');
-    
-    
-    
+
     class Member{
         // 멤버 변수, 프로퍼티
         private $conn;

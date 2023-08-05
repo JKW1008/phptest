@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const xhr = new XMLHttpRequest();
     xhr.open("post", "./pg/board_process.php", true);
     xhr.send(f);
-
+    console.log(xhr.responseText); // 응답 데이터 출력
     xhr.onload = () => {
       if (xhr.status == 200) {
         const data = JSON.parse(xhr.responseText);

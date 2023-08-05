@@ -28,6 +28,31 @@
     $member = new Member($db);
     
     if($mode == 'input'){
+        // 이미지 변환하여 저장하기
+        preg_match_all("/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i", $content, $matches);
+
+        $img_array = [];
+
+        foreach($matches[1] AS $key => $row){
+            if(substr($row, 0, 5) != 'data:'){
+                continue;
+            }
+
+            list($type, $data) = explode(';', $row);
+            list(, $data) = explode(',', $data);
+
+            $data = base64_decode($data);
+
+            list(,$ext) = explode('/', $type);
+
+            $ext = ($ext == 'jpeg') ? 'jpg' : $ext;
+
+            $filename = date('YmdHis') .'_'. $key .'.'. $ext;
+
+            file_put_contents(BOARD_DIR."/". $filename, $data);
+
+            $img_array[] = BOARD_DIR."/". $filename;
+        }
 
         if($subject == ''){
             die(json_encode(["result" => "empty_subject"]));
