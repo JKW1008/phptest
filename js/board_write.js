@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 파일 첨부
     const id_attach = document.querySelector("#id_attach");
-    const file = id_attach.files[0];
+    // const file = id_attach.files[0];
 
     const params = getUrlParams();
 
@@ -47,7 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     f.append("content", markupStr); // 게시물 내용
     f.append("bcode", params["bcode"]); // 게시판 코드
     f.append("mode", "input"); // 모드 : 글 등록
-    f.append("files", file); // 파일 첨부
+    // f.append("files", file); // 파일 첨부
+
+    for (const file of id_attach.files) {
+      f.append("files[]", file);
+    }
 
     const xhr = new XMLHttpRequest();
     xhr.open("post", "./pg/board_process.php", true);
