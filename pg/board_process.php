@@ -63,7 +63,18 @@
         if($content == '' || $content == '<p><br></p>'){
             die(json_encode(["result" => "empty_content"]));
         }
-        // bcode, id, namem, subject, content, hit, ip
+
+        // 파일 첨부
+        // $_FILES[]
+        if(isset($_FILES['files']) && $_FILES['files']['name'] != ''){
+            $tmparr = explode('.', $_FILES['files']['name']);
+            $ext = end($tmparr);
+            $flag = rand(1000, 9999);
+            $filename = 'a'. date('YmdHis') . $flag .'.'. $ext;
+            $file_ori = $_FILES['files']['name'];
+            // aaaaa.jpg | 새파일.jpg
+            $full_srt = $filename .'|'. $file_ori;
+        };
 
         $memArr = $member->getInfo($ses_id);
 
@@ -75,6 +86,7 @@
             'name' => $name,
             'subject' => $subject,
             'content' => $content,
+            'files' => $full_srt,
             'ip' => $_SERVER['REMOTE_ADDR']
         ];
 
