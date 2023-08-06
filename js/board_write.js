@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const id_attach = document.querySelector("#id_attach");
     // const file = id_attach.files[0];
 
+    if (id_attach.files.length > 3) {
+      alert("첨부할 수 있는 파일 수는 최대 3개까지 입니다.");
+      id_attach.value = "";
+      return false;
+    }
+
     const params = getUrlParams();
 
     const f = new FormData();
@@ -50,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // f.append("files", file); // 파일 첨부
 
     for (const file of id_attach.files) {
-      f.append("files[]", file);
+      f.append("files[]", file); // 파일
     }
 
     const xhr = new XMLHttpRequest();
@@ -63,10 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.result == "success") {
           alert("등록 되었습니다.");
           self.location.href = "./board.php?bcode=" + params["bcode"];
+        } else if (data.result == "file_upload_count_exceed") {
+          alert("파일 업로드 갯수를 초과했습니다.");
+          id_attach.value = "";
+          return false;
         }
       } else if (xhr.status == 404) {
         alert("통신 실패 파일이 존재하지 않습니다.");
       }
     };
+  });
+
+  const id_attach = document.querySelector("#id_attach");
+  id_attach.addEventListener("change", () => {
+    if (id_attach.files.length > 3) {
+      alert("첨부할 수 있는 파일 수는 최대 3개까지 입니다.");
+      id_attach.value = "";
+      return false;
+    }
   });
 });
