@@ -19,4 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     self.location.href = "./board_wirte.php?bcode=" + params["bcode"];
   });
+
+  const btn_search = document.querySelector("#btn_search");
+
+  btn_search.addEventListener("click", () => {
+    const sf = document.querySelector("#sf");
+
+    if (sf.value == "") {
+      alert("검색어를 입력해주세요.");
+      sf.focus();
+    }
+  });
 });

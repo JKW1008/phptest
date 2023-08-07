@@ -11,6 +11,12 @@ function getUrlParams() {
   return params;
 }
 
+function getExtensionOfFilename(filename) {
+  const filelen = filename.length; // 문자열의 길이
+  const lastdot = filename.lastIndexOf(".");
+  return filename.substring(lastdot + 1, filelen).toLowerCase();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 게시판 목록으로 이동하기
   const btn_board_list = document.querySelector("#btn_board_list");
@@ -55,7 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
     f.append("mode", "input"); // 모드 : 글 등록
     // f.append("files", file); // 파일 첨부
 
+    let ext = "";
+
     for (const file of id_attach.files) {
+      if (file.size > 40 * 1024 * 1024) {
+        alert(
+          "파일 용량이 40MB 보다 큰 파일이 첨부 되었습니다. 확인 바랍니다."
+        );
+        id_attach.value = "";
+        return false;
+      }
+      ext = getExtensionOfFilename(file.name);
+
+      if (ext == "txt" || ext == "exe" || ext == "xls" || ext == "dmg") {
+        alert("첨부할 수 없는 포맷의 파일이 첨부되었습니다.(exe, txt ..)");
+        id_attach.value = "";
+        return false;
+      }
+
       f.append("files[]", file); // 파일
     }
 
@@ -77,9 +100,15 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("첨부파일의 용량이 초과되었습니다.");
           id_attach.value = "";
           return false;
+        } else if (data.result == "not_allowed_file") {
+          alert("첨부할 수 없는 포맷의 파일이 첨부되었습니다.(exe, txt ..)");
+          id_attach.value = "";
+          return false;
         }
       } else if (xhr.status == 404) {
         alert("통신 실패 파일이 존재하지 않습니다.");
+        id_attach.value = "";
+        return false;
       }
     };
   });

@@ -3,7 +3,7 @@
         private static $googleApi = "218084976710-ikp6t5eio1qag7ui9ae0lkvrkb0p1mtq.apps.googleusercontent.com"; //private === const
         private static $googleClientSecret = "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"; //private === const , 정적
 
-        private static $redirectUrl = "http://localhost:8000/practice/social_login.php"; // 리다이렉트 위치 지정
+        private static $redirectUrl = "http://localhost:8000/social_login.php"; // 리다이렉트 위치 지정
 
         static public function socialLoginUrl($loginState){
             //로그인 구분 인자

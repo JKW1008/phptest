@@ -81,8 +81,13 @@
     </div>
     <div class="d-flex mt-3 justify-content-between align-items-start">
         <?php
+        $param = '$bcode=' .$bcode;
+
+        if(isset($sn) && $sn != '' && isset($sf) && $sf != ''){      
             $param = '&sn='. $sn.'&sf='. $sf;
-            echo my_pagination($total, $limit, $page_limit, $page, $param);
+        }
+        
+        echo my_pagination($total, $limit, $page_limit, $page, $param);
         ?>
         <button class="btn btn-primary" id="btn_excel">엑셀로 저장</button>
     </div>

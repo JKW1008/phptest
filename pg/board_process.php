@@ -78,6 +78,8 @@
 
         // 파일 첨부
         // $_FILES[]
+        $full_list_srt = '';
+        
         if(isset($_FILES['files'])){
 
             if(sizeof($_FILES['files']['name']) > 3){
@@ -93,6 +95,14 @@
                 
                 $tmparr = explode('.', $_FILES['files']['name'][$key]);
                 $ext = end($tmparr);
+
+                $not_arrowed_file_ext = ['txt', 'exe', 'xls', 'dmg'];
+
+                if(in_array($ext, $not_arrowed_file_ext)){
+                    $arr = ['result' => 'not_allowed_file'];
+                    die(json_encode($arr));
+                }
+
                 $flag = rand(1000, 9999);
                 $filename = 'a'. date('YmdHis') . $flag .'.'. $ext;
                 $file_ori = $_FILES['files']['name'][$key];
@@ -111,7 +121,6 @@
 
         $memArr = $member->getInfo($ses_id);
 
-        $full_list_srt = '';
 
         $name = $memArr['name'];
 
