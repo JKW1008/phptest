@@ -73,6 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("파일 업로드 갯수를 초과했습니다.");
           id_attach.value = "";
           return false;
+        } else if (data.result == "post_size_exceed") {
+          alert("첨부파일의 용량이 초과되었습니다.");
+          id_attach.value = "";
+          return false;
         }
       } else if (xhr.status == 404) {
         alert("통신 실패 파일이 존재하지 않습니다.");
@@ -83,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const id_attach = document.querySelector("#id_attach");
   id_attach.addEventListener("change", () => {
     if (id_attach.files.length > 3) {
-      alert("첨부할 수 있는 파일 수는 최대 3개까지 입니다.");
+      alert("파일은 최대 3개까지 첨부 가능합니다.");
       id_attach.value = "";
       return false;
     }
