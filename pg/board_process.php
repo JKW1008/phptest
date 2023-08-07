@@ -1,4 +1,14 @@
 <?php
+    //$err_array = error_get_last();
+
+    if(isset($_SERVER['CONTENT_LENGTH']) && $_SERVER['CONTENT_LENGTH'] > (int) ini_get('post_max_size') * 1024 * 1024){
+
+        $arr = ['result' => 'post_size_exceed'];
+        
+        die(json_encode($arr));
+    }
+
+
     include '../inc/common.php';
 
     include '../inc/dbconfig.php';
@@ -100,6 +110,8 @@
         };    
 
         $memArr = $member->getInfo($ses_id);
+
+        $full_list_srt = '';
 
         $name = $memArr['name'];
 
