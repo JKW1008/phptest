@@ -164,11 +164,11 @@
                     case 3 : $sn_str = 'email'; break;
                 }
 
-                $where = "  WHERE ".$sn_str."=:sf ";
+                $where = " WHERE ".$sn_str."=:sf ";
             }
 
             $sql = "SELECT idx, id, name, email, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at 
-                    FROM member ".$where." 
+                    FROM member ". $where ." 
                     ORDER BY idx DESC LIMIT ".$start.",".$limit;     // 1페이지면 0, 5, 2페이지면 5, 5, 10, 5, 10, 5
                     
             $stmt = $this->conn->prepare($sql);

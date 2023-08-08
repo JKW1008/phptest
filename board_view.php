@@ -14,13 +14,18 @@ ini_set( "display_errors", 1 );
     include "inc/lib.php";      // 페이지네이션
 
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
-    $page  = (isset($_GET['page' ]) && $_GET['page' ] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
-    $sn    = (isset($_GET['sn'   ]) && $_GET['sn'   ] != '') ? $_GET['sn'   ] : '';
-    $sf    = (isset($_GET['sf'   ]) && $_GET['sf'   ] != '') ? $_GET['sf'   ] : '';
+    $idx = (isset($_GET['idx']) && $_GET['idx'] != '' && is_numeric($_GET['idx'])) ? $_GET['idx'] : '';
 
     if($bcode == ''){
         die("<script>
                 alert('게시판 코드가 빠졌습니다.');
+                history.go(-1);
+            </script>");
+    }
+
+    if($idx == ''){
+        die("<script>
+                alert('게시물 번호가 빠졌습니다.');
                 history.go(-1);
             </script>");
     }
@@ -34,22 +39,14 @@ ini_set( "display_errors", 1 );
 
 
 
-    $board = new Board($db);
+    $board = new Board($db);    // 게시판 클래스
 
     $menu_code = 'board';
 
-    $js_array = ['js/board.js'];
+    $js_array = ['js/board_view.js'];
 
     $g_title = $board_name;
     
-    $paramArr = [ 'sn' => $sn, 'sf' => $sf];
-
-    $total = $board->total($bcode, $paramArr);
-
-    $limit = 10;
-
-    $page_limit = 5;
-
     $boardRs = $board->list($bcode, $page, $limit, $paramArr);
 
     include 'inc_header.php';
