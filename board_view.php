@@ -52,6 +52,8 @@
     $boardRow = $board->view($idx);
 
     include 'inc_header.php';
+
+    print_r($boardRow);
 ?>
     <main class="w-100 mx-auto border rounded-2 p-5">
         <h1 class="text-center"><?= $board_name; ?></h1>
