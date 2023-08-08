@@ -1,8 +1,8 @@
-<?php
-error_reporting( E_ALL );
-ini_set( "display_errors", 1 );
-?>
-<?php
+    <?php
+    error_reporting( E_ALL );
+    ini_set( "display_errors", 1 );
+    ?>
+    <?php
     
     include 'inc/common.php';   // 세션
 
@@ -47,73 +47,47 @@ ini_set( "display_errors", 1 );
 
     $g_title = $board_name;
     
-    $boardRs = $board->list($bcode, $page, $limit, $paramArr);
+    $boardRow = $board->hitInc($idx);
+
+    $boardRow = $board->view($idx);
 
     include 'inc_header.php';
 ?>
-<style>
-.tr {
-    cursor: pointer;
-}
-</style>
-<main class="w-100 mx-auto border rounded-2 p-5">
-    <h1 class="text-center"><?= $board_name; ?></h1>
-    <table class="table table-dark table-striped table-hover  mt-5">
-        <colgroup>
-            <col width="10%">
-            <col width="45%">
-            <col width="10%">
-            <col width="15%">
-            <col width="10%">
-        </colgroup>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>이름</th>
-            <th>날짜</th>
-            <th>조회수</th>
-        </tr>
-        <?php
-            $cnt = 0;
-            $ntotal = $total - ($page - 1) * $limit;
-            foreach($boardRs AS$boardRow){
-                $number = $ntotal - $cnt;
-                $cnt++;
-        ?>
-        <tr class="tr" data-idx="<?= $boardRow['idx']; ?>">
-            <td><?= $number; ?></td>
-            <td><?= $boardRow['subject'  ]; ?></td>
-            <td><?= $boardRow['name'     ]; ?></td>
-            <td><?= $boardRow['create_at']; ?></td>
-            <td><?= $boardRow['hit'      ]; ?></td>
-        </tr>
-        <?php
-            }
-        ?>
-    </table>
-    <div class="container mt-3 w-50 d-flex gap-2">
-        <select name="" id="sn" class="form-select w-25">
-            <option value="1" <?php if($sn == 1) echo ' selected'; ?>>제목+내용</option>
-            <option value="2" <?php if($sn == 2) echo ' selected'; ?>>제목</option>
-            <option value="3" <?php if($sn == 3) echo ' selected'; ?>>내용</option>
-            <option value="4" <?php if($sn == 4) echo ' selected'; ?>>글쓴이</option>
-        </select>
-        <input type="text" class="form-control w-25" id="sf" value="<?= $sf; ?>">
-        <button class="btn btn-primary w-25" id="btn_search">검색</button>
-        <button class="btn btn-info w-25" id="btn_all">전체목록</button>
-    </div>
-    <div class="d-flex justify-content-between align-items-start">
-        <?php
-        $param = '&bcode=' . $bcode;
+    <main class="w-100 mx-auto border rounded-2 p-5">
+        <h1 class="text-center"><?= $board_name; ?></h1>
 
-        if(isset($sn) && $sn !='' && isset($sf) && $sf != ''){
-            $param .= '&sn='. $sn.'&sf='. $sf;
-        }
-            echo my_pagination($total, $limit, $page_limit, $page, $param);
-        ?>
-        <button class="btn btn-primary" id="btn_write">글쓰기</button>
-    </div>
-</main>
-<?php
+        <div class="vstack w-75 mx-auto">
+            <div class="p-3">
+                <span class="h3 fw-bolder">
+                    <?= $boardRow['subject']; ?>
+                </span>
+            </div>
+            <div class="d-flex border border-top-0 border-start-0 border-end-0 border-bottom-1">
+                <span>
+                    <?= $boardRow['name']; ?>
+                </span>
+                <span class="ms-5 me-auto">
+                    <?= $boardRow['hit']; ?>회
+                </span>
+                <span>
+                    <?= $boardRow['create_at']; ?>
+                </span>
+            </div>
+            <div class="p-3">
+                <?= $boardRow['content']; ?>
+
+                <?php
+                    echo $boardRow['files'];
+                ?>
+            </div>
+            <div class="d-flex gap-2 p-3">
+                <button class="btn btn-secondary  me-auto">목록</button>
+                <button class="btn btn-primary">수정</button>
+                <button class="btn btn-danger">삭제</button>
+            </div>
+        </div>
+
+    </main>
+    <?php
     include 'inc_footer.php';
 ?>

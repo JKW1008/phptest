@@ -29,88 +29,107 @@
         }
 
         // 글 목록
-                // 회원목록
-                public function list($bcode, $page, $limit, $paramArr) {
-                    $start = ($page - 1) * $limit;
-                    $where = "WHERE bcode=:bcode ";
-                    $params = [':bcode' => $bcode]; // Initialize the $params array here
-                
-                    if (isset($paramArr['sn']) && $paramArr['sn'] != '' && isset($paramArr['sf']) && $paramArr['sf'] != '') {
-                        switch ($paramArr['sn']) {
-                            case 1:
-                                $where .= "AND (subject LIKE CONCAT('%', :sf, '%') OR (content LIKE CONCAT('%', :sf2, '%'))) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                $params[':sf2'] = $paramArr['sf'];
-                                break; // 제목 + 내용
-                
-                            case 2:
-                                $where .= "AND (subject LIKE CONCAT('%', :sf, '%')) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 제목
-                
-                            case 3:
-                                $where .= "AND (content  LIKE CONCAT('%', :sf, '%')) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 내용
-                
-                            case 4:
-                                $where .= "AND (name = :sf) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 글쓴이
-                        }
-                    }
-                
-                    $sql = "SELECT idx, id, subject, name, hit, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at 
-                            FROM board " . $where . " 
-                            ORDER BY idx DESC LIMIT " . $start . "," . $limit;
-                
-                    $stmt = $this->conn->prepare($sql);
-                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                    $stmt->execute($params);
-                    return $stmt->fetchAll();
-                }
-                
-                
-                // 전체 글 수 구하기
-                public function total($bcode, $paramArr){
-
-                    $where = "WHERE bcode=:bcode ";
-                    $params = [':bcode' => $bcode]; // Initialize the $params array here
-                
-                    if (isset($paramArr['sn']) && $paramArr['sn'] != '' && isset($paramArr['sf']) && $paramArr['sf'] != '') {
-                        switch ($paramArr['sn']) {
-                            case 1:
-                                $where .= "AND (subject LIKE CONCAT('%', :sf, '%') OR (content LIKE CONCAT('%', :sf2, '%'))) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                $params[':sf2'] = $paramArr['sf'];
-                                break; // 제목 + 내용
-                
-                            case 2:
-                                $where .= "AND (subject LIKE CONCAT('%', :sf, '%')) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 제목
-                
-                            case 3:
-                                $where .= "AND (content  LIKE CONCAT('%', :sf, '%')) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 내용
-                
-                            case 4:
-                                $where .= "AND (name = :sf) ";
-                                $params[':sf'] = $paramArr['sf'];
-                                break; // 글쓴이
-                        }
-                    }
-                
-                    $sql = "SELECT COUNT(*) AS cnt
-                            FROM board " . $where; 
-                
-                    $stmt = $this->conn->prepare($sql);
+        public function list($bcode, $page, $limit, $paramArr) {
+            $start = ($page - 1) * $limit;
+            $where = "WHERE bcode=:bcode ";
+            $params = [':bcode' => $bcode]; // Initialize the $params array here
         
-                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                    $stmt->execute($params);
-                    $row = $stmt->fetch();
-                    return $row['cnt'];
-                } 
+            if (isset($paramArr['sn']) && $paramArr['sn'] != '' && isset($paramArr['sf']) && $paramArr['sf'] != '') {
+                switch ($paramArr['sn']) {
+                    case 1:
+                        $where .= "AND (subject LIKE CONCAT('%', :sf, '%') OR (content LIKE CONCAT('%', :sf2, '%'))) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        $params[':sf2'] = $paramArr['sf'];
+                        break; // 제목 + 내용
+        
+                    case 2:
+                        $where .= "AND (subject LIKE CONCAT('%', :sf, '%')) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 제목
+        
+                    case 3:
+                        $where .= "AND (content  LIKE CONCAT('%', :sf, '%')) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 내용
+        
+                    case 4:
+                        $where .= "AND (name = :sf) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 글쓴이
+                }
+            }
+        
+            $sql = "SELECT idx, id, subject, name, hit, DATE_FORMAT(create_at, '%Y-%m-%d %H:%i') AS create_at 
+                    FROM board " . $where . " 
+                    ORDER BY idx DESC LIMIT " . $start . "," . $limit;
+        
+            $stmt = $this->conn->prepare($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute($params);
+            return $stmt->fetchAll();
+        }
+        
+        
+        // 전체 글 수 구하기
+        public function total($bcode, $paramArr){
+
+            $where = "WHERE bcode=:bcode ";
+            $params = [':bcode' => $bcode]; // Initialize the $params array here
+        
+            if (isset($paramArr['sn']) && $paramArr['sn'] != '' && isset($paramArr['sf']) && $paramArr['sf'] != '') {
+                switch ($paramArr['sn']) {
+                    case 1:
+                        $where .= "AND (subject LIKE CONCAT('%', :sf, '%') OR (content LIKE CONCAT('%', :sf2, '%'))) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        $params[':sf2'] = $paramArr['sf'];
+                        break; // 제목 + 내용
+        
+                    case 2:
+                        $where .= "AND (subject LIKE CONCAT('%', :sf, '%')) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 제목
+        
+                    case 3:
+                        $where .= "AND (content  LIKE CONCAT('%', :sf, '%')) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 내용
+        
+                    case 4:
+                        $where .= "AND (name = :sf) ";
+                        $params[':sf'] = $paramArr['sf'];
+                        break; // 글쓴이
+                }
+            }
+        
+            $sql = "SELECT COUNT(*) AS cnt
+                    FROM board " . $where; 
+        
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute($params);
+            $row = $stmt->fetch();
+            return $row['cnt'];
+        }
+
+        //  글 보기
+        public function view($idx){
+            $sql = "SELECT * FROM board WHERE idx=:idx";
+            $stmt = $this->conn->prepare($sql);
+            $params = [ ":idx" => $idx ];
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute($params);
+            return $stmt->fetch();
+        }
+
+        // 글 조회수 + 1
+        public function hitInc($idx){
+            $sql = "UPDATE board SET hit=hit+1 WHERE idx=:idx";
+            
+            $stmt = $this->conn->prepare($sql);
+            $params = [":idx" => $idx];
+            
+            $stmt->execute($params);
+        }
     }
 ?>

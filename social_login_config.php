@@ -107,7 +107,7 @@
 
             //curl 실행
             $response = curl_exec($ch);
-            CommonMethod::alert($response);
+            // CommonMethod::alert($response);
             //응답받은 json 디코딩
             $data = json_decode($response,true);
             //tokenModel 인스턴스 생성
@@ -149,16 +149,24 @@
         $uid = '';
         $nickname = '';
         $email = '';
+        
         if($state == 'kakao'){
             $uid = $decoded_data['id'];
             $kakaoAccount = $decoded_data['kakao_account'];
             $nickname = $kakaoAccount['profile']['nickname'];
-            $email = $kakaoAccount['email'];
+        
+            // Check if email is empty and use id as email
+            if (isset($kakaoAccount['email'])) {
+                $email = $kakaoAccount['email'];
+            } else {
+                $email = $uid;
+            }
         }else if($state == 'naver'){
             $responseData = $decoded_data['response'];
             $uid = $responseData['id'];
             $nickname = $responseData['nickname'];
-            $email =$responseData['email'];
+            $email = $responseData['email'];
+            $profile = $responseData['profile_image'];
         }else{
             $uid = $decoded_data['sub'];
             $nickname = $decoded_data['name'];
