@@ -53,7 +53,6 @@
 
     include 'inc_header.php';
 
-    print_r($boardRow);
 ?>
     <main class="w-100 mx-auto border rounded-2 p-5">
         <h1 class="text-center"><?= $board_name; ?></h1>
@@ -79,7 +78,15 @@
                 <?= $boardRow['content']; ?>
 
                 <?php
-                    echo $boardRow['files'];
+                    if($boardRow['files'] != ''){
+                        $filelist = explode('?', $boardRow['files']);
+                        
+                        foreach($filelist AS $file){
+                            list($file_source, $file_name) = explode('|', $file);
+
+                            echo "<a href=\"./data/board/$file_source\">$file_name</a><br>";
+                        }
+                    }
                 ?>
             </div>
             <div class="d-flex gap-2 p-3">

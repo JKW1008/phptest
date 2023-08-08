@@ -89,53 +89,48 @@
 
             $tmp_arr = [];
 
-            foreach($_FILES['files']['name'] AS $key => $val){
-                // $_FILES['files']['name'][$key];
-                $full_srt = ''; 
-                
-                $tmparr = explode('.', $_FILES['files']['name'][$key]);
-                $ext = end($tmparr);
+            foreach ($_FILES['files']['name'] as $key => $val) {
+            $full_srt = '';
 
-                $not_arrowed_file_ext = ['txt', 'exe', 'xls', 'dmg'];
+            $tmparr = explode('.', $_FILES['files']['name'][$key]);
+            $ext = end($tmparr);
 
-                if(in_array($ext, $not_arrowed_file_ext)){
-                    $arr = ['result' => 'not_allowed_file'];
-                    die(json_encode($arr));
-                }
+            $not_allowed_file_ext = ['txt', 'exe', 'xls', 'dmg'];
 
-                $flag = rand(1000, 9999);
-                $filename = 'a'. date('YmdHis') . $flag .'.'. $ext;
-                $file_ori = $_FILES['files']['name'][$key];
-    
-                // copy() move_uploaded_file()
-                copy($_FILES['files']['tmp_name'][$key], BOARD_DIR .'/'. $filename);
-
-                // aaaaa.jpg | 새파일.jpg
-                $full_srt = $filename .'|'. $file_ori;
-                $tmp_arr[] = $full_srt;
+            if (in_array($ext, $not_allowed_file_ext)) {
+                $arr = ['result' => 'not_allowed_file'];
+            die(json_encode($arr));
             }
 
+            $flag = rand(1000, 9999);
+            $filename = 'a' . date('YmdHis') . $flag . '.' . $ext;
+            $file_ori = $_FILES['files']['name'][$key];
+
+            copy($_FILES['files']['tmp_name'][$key], BOARD_DIR . '/' . $filename);
+
+            $full_srt = $filename . '|' . $file_ori;
+            $tmp_arr[] = $full_srt; // 각 파일 정보를 $tmp_arr에 추가
+
+            }   
+
             $file_list_str = implode('?', $tmp_arr);
-            
-        };    
 
-        $memArr = $member->getInfo($ses_id);
+            $memArr = $member->getInfo($ses_id);
+            $name = $memArr['name'];
 
+            $arr = [
+                'bcode' => $bcode,
+                'id' => $ses_id,
+                'name' => $name,
+                'subject' => $subject,
+                'content' => $content,
+                'files' => $file_list_str, // 수정된 부분
+                'ip' => $_SERVER['REMOTE_ADDR']
+            ];
 
-        $name = $memArr['name'];
+            $board->input($arr);
+            die(json_encode(["result" => "success"]));
 
-        $arr = [
-            'bcode' => $bcode,
-            'id' => $ses_id,
-            'name' => $name,
-            'subject' => $subject,
-            'content' => $content,
-            'files' => $full_list_srt,
-            'ip' => $_SERVER['REMOTE_ADDR']
-        ];
-
-        $board->input($arr);
-
-        die(json_encode(["result" => "success"]));
+        }
     }
 ?>
