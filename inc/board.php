@@ -131,5 +131,53 @@
             
             $stmt->execute($params);
         }
+
+        // 첨부파일 구하기
+        public function getAttachFile($idx, $th){
+            $sql = "SELECT files FROM board WHERE idx=:idx";
+
+            $stmt = $this->conn->prepare($sql);
+            $params = [":idx" => $idx];
+            
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $stmt->execute($params);
+            $row = $stmt->fetch();
+
+            $filelist = explode('?', $row['files']);
+
+            return $filelist[$th] .'|'. count($filelist);
+        }
+
+        // 다운로드 횟수 구하기
+        public function getDownHit($idx){
+            $sql = "SELECT downhit FROM board WHERE idx=:idx";
+
+            $stmt = $this->conn->prepare($sql);
+            $params = [":idx" => $idx];
+            
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $stmt->execute($params);
+            $row = $stmt->fetch();
+
+            return $row['downhit'];
+        }
+
+        // 다운로드 횟수 증가시키기
+        public function increaseDownHit($idx, $downhit){
+            $sql = "UPDATE board SET downhit=:downhit WHERE idx=:idx";
+            $stmt = $this->conn->prepare($sql);
+            $params = [":downhit" => $downhit, ":idx" => $idx];
+            $stmt->execute($params);
+        }
+
+        // last_reader 값 변경
+        public function updateLastReader($idx, $str){
+            $sql = "UPDATE board SET last_reader=:last_reader WHERE idx=:idx";
+            $stmt = $this->conn->prepare($sql);
+            $params = [":last_reader" => $str, ":idx" => $idx];
+            $stmt->execute($params);
+        }
     }
 ?>
