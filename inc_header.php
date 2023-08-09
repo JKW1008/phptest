@@ -54,7 +54,7 @@
                             <span class="main_title">여행지</span>
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
                             <ul class="sub_menu">
-                                <a href="./sub_toulist.">
+                                <a href="./sub_toulist.php">
                                     <li>관광지</li>
                                 </a>
                                 <a href="./sub_food.php">
