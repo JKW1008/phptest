@@ -77,6 +77,19 @@
             $stmt->execute($params);
             return $stmt->fetchAll();
         }
+
+        // 최신 글 목록
+        public function getLatestPosts($page, $limit) {
+            $start = ($page - 1) * $limit;
+            $sql = "SELECT content, hit 
+                    FROM board
+                    ORDER BY idx DESC LIMIT " . $start . "," . $limit;
+        
+            $stmt = $this->conn->prepare($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
         
         
         // 전체 글 수 구하기
