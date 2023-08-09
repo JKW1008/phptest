@@ -173,11 +173,11 @@
         }
 
         // last_reader 값 변경
-        public function updateLastReader($idx, $str){
+        public function updateLastReader($idx, $str) {
             $sql = "UPDATE board SET last_reader=:last_reader WHERE idx=:idx";
             $stmt = $this->conn->prepare($sql);
             $params = [":last_reader" => $str, ":idx" => $idx];
             $stmt->execute($params);
-        }
+        }        
     }
 ?>

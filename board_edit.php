@@ -1,8 +1,4 @@
 <?php
-    error_reporting( E_ALL );
-    ini_set( "display_errors", 1 );
-?>
-<?php
     include 'inc/common.php';
 
     include 'inc/dbconfig.php';
@@ -10,8 +6,7 @@
     $db = $pdo; 
     
     include "inc/board.php";
-    
-    $mode = (isset($_POST['mode']) && $_POST['mode'] != '') ? $_POST['mode'] : '';
+
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
 
     if($bcode == ''){
@@ -21,15 +16,36 @@
             </script>");
     }
     
+    $idx = (isset($_GET['idx']) && $_GET['idx'] != '') ? $_GET['idx'] : '';
+
+    if($idx == ''){
+        die("<script>
+                alert('게시물 번호가 빠졌습니다.');
+                histoty.go(-1);
+            </script>");
+    }
+
+    // 게시판 목록
     include 'inc/boardmanage.php';
 
     $boardm = new BoardManage($db);
     $boardArr = $boardm->list();
     $board_name = $boardm->getBoardName($bcode);
 
+    // 게시판
     $board = new Board($db);
+    $boardRow = $board->view($idx);
 
-    $js_array = ['js/board_write.js'];
+    if($boardRow['id'] != $ses_id){
+        die("<script>
+                alert('본인의 게시물이 아닙니다. 수정할 수 없습니다.');
+                self.location.href = './board.php?bcode=".$bcode."';
+            </script>");
+    }
+
+    $boardRow['content'] = str_replace('`','\`', $boardRow['content']);
+
+    $js_array = ['js/board_edit.js'];
 
     $g_title = '게시판';
 
@@ -41,10 +57,10 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <main class="w-75 mx-auto border rounded-2 p-5">
-    <h1 class="text-center">게시판 글쓰기</h1>
+    <h1 class="text-center">게시판 글 수정</h1>
     <div class="mb-3">
-        <input type="text" name="subject" id="id_subject" class="form-control" placeholder="제목을 입력해 주세요."
-            autocomplete="off">
+        <input type="text" name="subject" id="id_subject" value="<?= $boardRow['subject']; ?>" class="form-control"
+            placeholder="제목을 입력해 주세요." autocomplete="off">
     </div>
     <div id="summernote"></div>
     <div class="mt-3">
@@ -70,6 +86,9 @@ $('#summernote').summernote({
         ['view', ['fullscreen', 'codeview', 'help']]
     ]
 });
+
+var markupStr = `<?= $boardRow['content']; ?>`;
+$('#summernote').summernote('code', markupStr);
 </script>
 
 <?php

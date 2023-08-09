@@ -1,7 +1,4 @@
-    <?php
-    error_reporting( E_ALL );
-    ini_set( "display_errors", 1 );
-    ?>
+
     <?php
     
     include 'inc/common.php';   // 세션
@@ -108,8 +105,14 @@
             </div>
             <div class="d-flex gap-2 p-3">
                 <button class="btn btn-secondary me-auto" id="btn_list">목록</button>
-                <button class="btn btn-primary">수정</button>
-                <button class="btn btn-danger">삭제</button>
+                <?php 
+                    if($boardRow['id'] == $ses_id){
+                ?>
+                <button class="btn btn-primary" id="btn_edit">수정</button>
+                <button class="btn btn-danger" id="btn_delete">삭제</button>
+                <?php
+                    }
+                ?>
             </div>
         </div>
 
