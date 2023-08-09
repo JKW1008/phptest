@@ -100,7 +100,7 @@
 
             // 세션 시작 시간과 현재 시간의 차이를 계산하여 유효 기간을 확인합니다.
             $sessionDuration = time() - $_SESSION['start_time'];
-            $oneHourInSeconds = 3600; // 1시간 = 60분 * 60초 = 3600초
+            $oneHourInSeconds = 10; // 1시간 = 60분 * 60초 = 3600초
 
             // 만약 유효 기간이 1시간을 초과하면 세션을 파기합니다.
             if ($sessionDuration > $oneHourInSeconds) {

@@ -26,6 +26,8 @@
     $limit = 5;
     $page_limit = 5;
     $page = (isset($_GET['page']) && $_GET['page'] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
+    $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
+
     
 
     $param = ''; 

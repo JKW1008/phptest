@@ -1,8 +1,4 @@
 <?php
-    error_reporting( E_ALL );
-    ini_set( "display_errors", 1 );
-?>
-<?php
     include 'inc/common.php';
 
     include 'inc/dbconfig.php';
@@ -10,8 +6,8 @@
     $db = $pdo; 
     
     include "inc/board.php";
-    
     $mode = (isset($_POST['mode']) && $_POST['mode'] != '') ? $_POST['mode'] : '';
+
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
 
     if($bcode == ''){

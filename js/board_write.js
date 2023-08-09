@@ -72,7 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       ext = getExtensionOfFilename(file.name);
 
-      if (ext == "txt" || ext == "exe" || ext == "xls" || ext == "dmg") {
+      if (
+        ext == "txt" ||
+        ext == "exe" ||
+        ext == "xls" ||
+        ext == "dmg" ||
+        ext == "php" ||
+        ext == "js"
+      ) {
         alert("첨부할 수 없는 포맷의 파일이 첨부되었습니다.(exe, txt ..)");
         id_attach.value = "";
         return false;
@@ -85,9 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     xhr.open("post", "./pg/board_process.php", true);
     xhr.send(f);
-    console.log(f);
     xhr.onload = () => {
       if (xhr.status == 200) {
+        console.log(xhr.responseText);
+
         const data = JSON.parse(xhr.responseText);
         if (data.result == "success") {
           alert("등록 되었습니다.");
