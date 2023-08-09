@@ -7,7 +7,7 @@
         private static $googleClientSecret = "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"; //private === const , 정적
         private static $naverClientSecret = "q8VwpzXqVE";
 
-        private static $redirectUrl = "http://localhost:8000/social_login.php"; // 리다이렉트 위치 지정
+        private static $redirectUrl = "https://port-9000-phptest-kvmh2mljzfmpxr.sel4.cloudtype.app/social_login.php"; // 리다이렉트 위치 지정
 
         static public function socialLoginUrl($loginState){
             //로그인 구분 인자
