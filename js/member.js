@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btn_member = document.querySelector("#btn_member");
-  if (window.location.pathname === "/stipulation.php") {
+  if (window.location.pathname == "/stipulation.php") {
     // stipulation.php에서만 실행되어야 하는 코드
     btn_member.addEventListener("click", () => {
       const chk_member1 = document.querySelector("#chk_member1");

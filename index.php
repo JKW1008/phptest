@@ -261,10 +261,10 @@ foreach ($newboard as $post) {
 
     // 글자 수 제한 설정
     $maxLength = 20;
-    $trimmedContent = mb_substr($subject, 0, $maxLength);
+    $trimmedContent = iconv_substr($subject, 0, $maxLength);
     
     // 글자 수가 제한보다 길 경우 "..." 추가
-    if (mb_strlen($subject) > $maxLength) {
+    if (iconv_strlen($subject) > $maxLength) {
         $trimmedContent .= "...";
     }
 
