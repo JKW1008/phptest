@@ -79,12 +79,9 @@
         }
 
         // 최신 글 목록
-        public function getLatestPosts($page, $limit) {
-            $start = ($page - 1) * $limit;
-            $sql = "SELECT content, hit 
-                    FROM board
-                    ORDER BY idx DESC LIMIT " . $start . "," . $limit;
-        
+        public function getLatestPosts() {
+            $sql = "SELECT subject, hit FROM board ORDER BY idx DESC LIMIT 10";
+
             $stmt = $this->conn->prepare($sql);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();

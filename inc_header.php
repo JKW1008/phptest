@@ -5,7 +5,7 @@
     $db = $pdo;
 
     include "inc/member.php";
-    $js_array = ['js/login.js'];
+    $js_array = ['js/login.js', 'js/board.js', 'js/board_write.js'];
 
 
     include 'inc/boardmanage.php';
@@ -151,6 +151,7 @@
                             } else {
                                 // 로그인 안된 상태
                         ?>
+                    <img src="./img/user_icon.png" alt="user_icon" class="main_login_btn user_icon" />
 
                     <button class="main_login_btn">로그인</button>
                     <button id="signup">회원가입</button>
@@ -159,7 +160,6 @@
                         ?>
                     <!-- <button class="main_login_btn">로그인</button>
                     <button>회원가입</button> -->
-                    <img src="./img/user_icon.png" alt="user_icon" class="main_login_btn user_icon" />
                 </div>
                 <!-- 토글 메뉴 -->
                 <div class="nav_toggle">
@@ -188,7 +188,9 @@
                                         <a href="./sub_accommodation.php">
                                             <li>숙박</li>
                                         </a>
+
                                     </ul>
+
                                 </div>
                             </li>
                         </ui>

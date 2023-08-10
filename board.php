@@ -1,11 +1,11 @@
 <?php
+  error_reporting( E_ALL );
+  ini_set( "display_errors", 1 );
+?>
+<?php
     
-    include 'inc/common.php';   // 세션
+    include 'inc_header.php';
 
-    include 'inc/dbconfig.php';
-
-    $db = $pdo; 
-    
     include "inc/board.php";    //  게시판 클래스
     include "inc/lib.php";      // 페이지네이션
 
@@ -22,23 +22,24 @@
     }
 
     // 게시판 목록
-    include 'inc/boardmanage.php';
-
-    $boardm = new BoardManage($db);
-    $boardArr = $boardm->list();
-    $board_name = $boardm->getBoardName($bcode);
 
 
+
+    $db = $pdo; 
 
     $board = new Board($db);
 
     $menu_code = 'board';
 
-    $js_array = ['js/board.js'];
+
+    
+    $boardm = new BoardManage($db);
+    $boardArr = $boardm->list();
+    $board_name = $boardm->getBoardName($bcode);
+    $paramArr = [ 'sn' => $sn, 'sf' => $sf];
 
     $g_title = $board_name;
-    
-    $paramArr = [ 'sn' => $sn, 'sf' => $sf];
+
 
     $total = $board->total($bcode, $paramArr);
 
@@ -48,7 +49,7 @@
 
     $boardRs = $board->list($bcode, $page, $limit, $paramArr);
 
-    include 'inc_header.php';
+
 ?>
 <style>
 .tr {
@@ -110,7 +111,7 @@
         }
             echo my_pagination($total, $limit, $page_limit, $page, $param);
         ?>
-        <button class="btn btn-primary" id="btn_write">글쓰기</button>
+        <button class="btn btn-primary" id="btn_write" onclick="redirectToWrite()">글쓰기</button>
     </div>
 </main>
 <?php

@@ -1,13 +1,18 @@
 <?php
-    include 'inc/common.php';
-    include "inc/dbconfig.php";
-    
+  error_reporting( E_ALL );
+  ini_set( "display_errors", 1 );
+?>
+<?php
+    include 'inc_header.php';
+
+    include "./inc/board.php";
     $db = $pdo;
 
     $g_title = 'test';
     $js_array = [ 'js/home.js'];
 
-    include 'inc_header.php';
+    $board = new Board($db);
+
 ?>
 
 <main>
@@ -247,46 +252,32 @@
         <div class="knowledge_notice">
             <h2>신규 질문</h2>
             <div class="notice_items">
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요1</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요2</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요3</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요4</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요</p>
-                    <p>조회:26 답변:2</p>
-                </div>
-                <div>
-                    <img src="./img/round.svg" alt="*" />
-                    <p>분위기 좋은 술집 알려주세요</p>
-                    <p>조회:26 답변:2</p>
-                </div>
+                <?php
+$newboard = $board->getLatestPosts();
+
+foreach ($newboard as $post) {
+    $subject = $post['subject'];
+    $hit = $post['hit'];
+
+    // 글자 수 제한 설정
+    $maxLength = 20;
+    $trimmedContent = mb_substr($subject, 0, $maxLength);
+    
+    // 글자 수가 제한보다 길 경우 "..." 추가
+    if (mb_strlen($subject) > $maxLength) {
+        $trimmedContent .= "...";
+    }
+
+    echo '<div>';
+    echo '<img src="./img/round.svg" alt="*" />';
+    echo "<p>$trimmedContent</p>";
+    echo "<p>조회 : $hit</p>";
+    echo '</div>';
+}
+
+
+?>
+
             </div>
         </div>
     </section>

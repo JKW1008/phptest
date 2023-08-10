@@ -52,7 +52,7 @@ section.main_carousel .swiper {
 section.main_carousel .swiper .swiper-wrapper .swiper-slide img {
   width: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 section.main_carousel .slide_text {
   text-align: center;
@@ -126,7 +126,7 @@ section.first_carousel.first_carousel .swiper-slide img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 section.first_carousel.first_carousel .first_swiper .text_box {
   width: 27.092vw;
@@ -139,7 +139,10 @@ section.first_carousel.first_carousel .first_swiper .text_box {
   box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
-section.first_carousel.first_carousel .first_swiper .text_box .text_box_description {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  .text_box_description {
   color: #7d7d7d;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 0.9375vw;
@@ -151,14 +154,21 @@ section.first_carousel.first_carousel .first_swiper .text_box .text_box_descript
   margin-right: 2.0833vw;
   margin-top: 1.25vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1) {
   display: flex;
   border-bottom: 2px solid #ececec;
   margin-left: 1.3021vw;
   margin-right: 1.3021vw;
   height: 5.3125vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) button {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  button {
   background-color: #f54747;
   border: none;
   border-radius: 20px;
@@ -169,25 +179,51 @@ section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1)
   margin-left: 2.3958vw;
   margin-top: 2.5vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  > div {
   margin-top: 1.6667vw;
   margin-left: 0.7813vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_main_text {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  > div
+  .text_box_main_text {
   font-size: 1.3542vw;
   font-weight: bold;
   text-align: left;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  > div
+  .text_box_location {
   display: flex;
   margin-top: 0.5vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location img {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  > div
+  .text_box_location
+  img {
   width: 0.7292vw;
   height: 1.0417vw;
   margin-right: 0.5vw;
 }
-section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location p {
+section.first_carousel.first_carousel
+  .first_swiper
+  .text_box
+  > div:nth-child(1)
+  > div
+  .text_box_location
+  p {
   color: #959595;
   font-size: 0.8333vw;
 }
@@ -213,12 +249,20 @@ section.first_carousel .swiper_button .swiper-button-next.swiper-button-next,
 section.first_carousel .swiper_button .swiper-button-prev.swiper-button-next {
   left: 2.605vw;
 }
-section.first_carousel .swiper_button .swiper-button-next.swiper-button-next:after,
-section.first_carousel .swiper_button .swiper-button-prev.swiper-button-next:after {
+section.first_carousel
+  .swiper_button
+  .swiper-button-next.swiper-button-next:after,
+section.first_carousel
+  .swiper_button
+  .swiper-button-prev.swiper-button-next:after {
   font-size: 1.2504vw;
 }
-section.first_carousel .swiper_button .swiper-button-next.swiper-button-prev:after,
-section.first_carousel .swiper_button .swiper-button-prev.swiper-button-prev:after {
+section.first_carousel
+  .swiper_button
+  .swiper-button-next.swiper-button-prev:after,
+section.first_carousel
+  .swiper_button
+  .swiper-button-prev.swiper-button-prev:after {
   font-size: 1.2504vw;
 }
 section.first_carousel .swiper-pagination {
@@ -267,7 +311,11 @@ section.second_carousel .swiper-wrapper .swiper-slide .festival_text {
   font-family: "Noto Sans KR", sans-serif;
   height: 5.731vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(1) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_text
+  p:nth-child(1) {
   color: var(--sub-text, #7e7e7e);
   font-size: 0.8336vw;
   font-weight: 500;
@@ -275,7 +323,11 @@ section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child
   padding-top: 1.3025vw;
   line-height: 1.3;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(2) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_text
+  p:nth-child(2) {
   color: var(--font-color, #333);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.2504vw;
@@ -283,7 +335,11 @@ section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child
   margin-left: 1.042vw;
   margin-top: 2.2924vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(3) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_text
+  p:nth-child(3) {
   color: #2c3047;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 0.7294vw;
@@ -299,21 +355,33 @@ section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text {
   font-family: "Noto Sans KR", sans-serif;
   height: 5.6268vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(1) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_second_text
+  p:nth-child(1) {
   color: var(--sub-text, #7e7e7e);
   font-size: 0.8336vw;
   font-weight: 500;
   margin-left: 1.042vw;
   padding-top: 1.042vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(2) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_second_text
+  p:nth-child(2) {
   color: var(--sub-text, #7e7e7e);
   font-size: 0.8336vw;
   font-weight: 500;
   margin-left: 1.042vw;
   margin-top: 0.2605vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(3) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_second_text
+  p:nth-child(3) {
   color: var(--font-color, #333);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.2504vw;
@@ -321,7 +389,11 @@ section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nt
   margin-left: 1.042vw;
   margin-top: 1.4588vw;
 }
-section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(4) {
+section.second_carousel
+  .swiper-wrapper
+  .swiper-slide
+  .festival_second_text
+  p:nth-child(4) {
   color: #2c3047;
   font-size: 0.7294vw;
   font-weight: 500;
@@ -393,6 +465,7 @@ section.knowledge_in .knowledge_notice .notice_items {
   margin-left: 2.9697vw;
   margin-top: 1.7714vw;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding-bottom: 1.2504vw;
 }
@@ -441,7 +514,7 @@ section.sns_item .sns_items > div img:nth-child(1) {
   width: 23.445vw;
   height: 13.2334vw;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 20px 20px 20px 0;
 }
 section.sns_item .sns_items > div img:nth-child(2) {
@@ -533,43 +606,79 @@ section.sns_item > div.gray_section {
     border: 1px solid #ececec;
     box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.05);
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1) {
     height: 13.2804vw;
     margin-left: 3.906vw;
     margin-right: 3.906vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) button {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    button {
     width: 10.6764vw;
     height: 3.906vw;
     font-size: 2.0832vw;
     margin-top: 6.1845vw;
     margin-left: 1.8228vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div {
     margin-top: 4.1664vw;
     margin-left: 2.2134vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_main_text {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_main_text {
     font-size: 3.3852vw;
     margin-bottom: 1.0416vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location {
     display: flex;
     margin-top: 0.2604vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location img {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location
+    img {
     width: 2.604vw;
     height: 2.604vw;
     margin-right: 0.5vw;
     -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location p {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location
+    p {
     font-size: 2.0832vw;
     font-weight: 500;
     margin-top: 0.2vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box .text_box_description {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    .text_box_description {
     font-size: 2.0832vw;
     font-style: normal;
     font-weight: 500;
@@ -609,17 +718,29 @@ section.sns_item > div.gray_section {
     margin-top: -1.0416vw;
     height: 14.322vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(1) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(1) {
     font-size: 2.0832vw;
     margin-left: 3.08574vw;
     padding-top: 3.48936vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(2) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(2) {
     font-size: 3.1248vw;
     margin-left: 3.08574vw;
     margin-top: 6.141534vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(3) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(3) {
     font-size: 1.8228vw;
     margin-left: 3.08574vw;
     margin-top: 1.25643vw;
@@ -629,22 +750,38 @@ section.sns_item > div.gray_section {
     margin-left: 0.1302vw;
     height: 14.322vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(1) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(1) {
     font-size: 2.0832vw;
     margin-left: 3.08574vw;
     padding-top: 3.48936vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(2) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(2) {
     font-size: 2.0832vw;
     margin-left: 3.08574vw;
     margin-top: 0.651vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(3) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(3) {
     font-size: 3.1248vw;
     margin-left: 3.08574vw;
     margin-top: 3.3852vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(4) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(4) {
     color: #2c3047;
     font-size: 1.8228vw;
     margin-left: 3.08574vw;
@@ -735,7 +872,7 @@ section.sns_item > div.gray_section {
     width: 45.57vw;
     height: 26.04vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   section.sns_item .sns_items > div img:nth-child(2) {
     width: 5.859vw;
@@ -802,43 +939,79 @@ section.sns_item > div.gray_section {
     border: 1px solid #ececec;
     box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.05);
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1) {
     height: 22.50405vw;
     margin-left: 6.10575vw;
     margin-right: 6.10575vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) button {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    button {
     width: 12.2115vw;
     height: 6.60584vw;
     font-size: 2.7912vw;
     margin-top: 10.467vw;
     margin-left: 9.304vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div {
     margin-top: 8.3736vw;
     margin-left: 7.4432vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_main_text {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_main_text {
     font-size: 4.652vw;
     margin-bottom: 1.8608vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location {
     display: flex;
     margin-top: 0.2326vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location img {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location
+    img {
     width: 3.9542vw;
     height: 3.7216vw;
     margin-right: 0.5vw;
     -o-object-fit: contain;
-       object-fit: contain;
+    object-fit: contain;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box > div:nth-child(1) > div .text_box_location p {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    > div:nth-child(1)
+    > div
+    .text_box_location
+    p {
     font-size: 2.7912vw;
     font-weight: 500;
     margin-top: 0.2vw;
   }
-  section.first_carousel.first_carousel .first_swiper .text_box .text_box_description {
+  section.first_carousel.first_carousel
+    .first_swiper
+    .text_box
+    .text_box_description {
     font-size: 3.0238vw;
     line-height: 1.8;
     margin-left: 6.978vw;
@@ -870,17 +1043,29 @@ section.sns_item > div.gray_section {
     margin-top: -1.8608vw;
     height: 25.586vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(1) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(1) {
     font-size: 3.7216vw;
     margin-left: 6.0476vw;
     padding-top: 6.2802vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(2) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(2) {
     font-size: 4.652vw;
     margin-left: 6.0476vw;
     margin-top: 11.09502vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_text p:nth-child(3) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_text
+    p:nth-child(3) {
     font-size: 3.2564vw;
     margin-left: 6.0476vw;
     margin-top: 2.326vw;
@@ -890,22 +1075,38 @@ section.sns_item > div.gray_section {
     margin-left: 0.2326vw;
     height: 25.586vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(1) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(1) {
     font-size: 3.7216vw;
     margin-left: 6.0476vw;
     padding-top: 6.2802vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(2) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(2) {
     font-size: 3.7216vw;
     margin-left: 6.0476vw;
     margin-top: 1.163vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(3) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(3) {
     font-size: 4.652vw;
     margin-left: 6.0476vw;
     margin-top: 6.0476vw;
   }
-  section.second_carousel .swiper-wrapper .swiper-slide .festival_second_text p:nth-child(4) {
+  section.second_carousel
+    .swiper-wrapper
+    .swiper-slide
+    .festival_second_text
+    p:nth-child(4) {
     font-size: 3.2564vw;
     margin-left: 6.0476vw;
     margin-top: 2.0934vw;
@@ -995,7 +1196,7 @@ section.sns_item > div.gray_section {
     width: 91.4118vw;
     height: 51.172vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   section.sns_item .sns_items > div img:nth-child(2) {
     width: 10.467vw;

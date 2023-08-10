@@ -1,14 +1,10 @@
 <?php
-    include 'inc/common.php';
-
-    include 'inc/dbconfig.php';
-
-    $db = $pdo; 
+    include 'inc_header.php';
     
     include "inc/board.php";
     $mode = (isset($_POST['mode']) && $_POST['mode'] != '') ? $_POST['mode'] : '';
-
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
+
 
     if($bcode == ''){
         die("<script>
@@ -17,19 +13,14 @@
             </script>");
     }
     
-    include 'inc/boardmanage.php';
-
-    $boardm = new BoardManage($db);
     $boardArr = $boardm->list();
     $board_name = $boardm->getBoardName($bcode);
 
     $board = new Board($db);
 
-    $js_array = ['js/board_write.js'];
 
     $g_title = '게시판';
 
-    include 'inc_header.php';
 ?>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
