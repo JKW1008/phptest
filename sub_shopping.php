@@ -1,6 +1,7 @@
 <?php
     include 'inc_header.php';
 ?>
+<link rel="stylesheet" href="./css/pagination_shopping.css">
 
 <main>
     <section class="map_banner">
@@ -61,7 +62,19 @@
         <div id="map"></div>
         </div>
     </section>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b94c492ea514833ba4fe0a9d6a43b6e&libraries=services"></script>
 
+    <script src="./js/pagenation_none.js"></script>
+    <script src="./js/shopping.js" defer></script>
+    <script src="./js/map_shopping.js"></script>
+
+    <script src="https://kit.fontawesome.com/59f8fe4f52.js" crossorigin="anonymous"></script>
+
+    <script src="./js/toggle.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/weather.js"></script>
+    <script src="./js/mordal.js"></script>
     <?php
     include 'inc_footer.php';
 ?>

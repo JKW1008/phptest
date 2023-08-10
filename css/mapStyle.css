@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 main {
   font-family: "Noto Sans KR", sans-serif;
-  padding-top: 90px;
 }
 main section.map_banner {
   position: relative;
@@ -63,7 +62,7 @@ main section.map_section .item_list .map_items > img {
   height: 10.42vw;
   margin-right: 1.042vw;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 10px;
 }
 main section.map_section .item_list .map_items .item_title {
@@ -108,7 +107,13 @@ main section.map_section .item_list .map_items .item_title .item_icons img {
 main section.map_section .item_list .map_items .item_title .item_icons p {
   font-size: 0.8336vw;
 }
-main section.map_section .item_list .map_items .item_title .item_icons p:not(:last-child) {
+main
+  section.map_section
+  .item_list
+  .map_items
+  .item_title
+  .item_icons
+  p:not(:last-child) {
   margin-right: 1.3546vw;
 }
 main section.map_section .page_container {
@@ -127,7 +132,7 @@ main section.map_section .container {
   padding: 1.042vw;
   border-radius: 8px;
   -moz-column-gap: 0.6252vw;
-       column-gap: 0.6252vw;
+  column-gap: 0.6252vw;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 main section.map_section .button {
@@ -147,11 +152,11 @@ main section.map_section .link {
 }
 main section.map_section .links {
   -moz-column-gap: 0.6252vw;
-       column-gap: 0.6252vw;
+  column-gap: 0.6252vw;
 }
 main section.map_section .links-group {
   -moz-column-gap: 0.6252vw;
-       column-gap: 0.6252vw;
+  column-gap: 0.6252vw;
 }
 main section.map_section .link {
   font-weight: 500;
@@ -182,7 +187,7 @@ main section.map_section #map {
   width: 12.7124vw;
   height: 12.7124vw;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 1.042vw;
   margin-right: 1.042vw;
 }
@@ -269,7 +274,7 @@ main section.map_section #map {
     height: 16.672vw;
     margin-right: 2.084vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 10px;
     margin-left: 1.042vw;
     margin-top: 1.042vw;
@@ -288,7 +293,13 @@ main section.map_section #map {
   main section.map_section .item_list .map_items .item_title .item_location {
     display: flex;
   }
-  main section.map_section .item_list .map_items .item_title .item_location img {
+  main
+    section.map_section
+    .item_list
+    .map_items
+    .item_title
+    .item_location
+    img {
     width: 1.042vw;
     height: 1.3546vw;
     margin-right: 0.521vw;
@@ -316,7 +327,13 @@ main section.map_section #map {
   main section.map_section .item_list .map_items .item_title .item_icons p {
     font-size: 0.8336vw;
   }
-  main section.map_section .item_list .map_items .item_title .item_icons p:not(:last-child) {
+  main
+    section.map_section
+    .item_list
+    .map_items
+    .item_title
+    .item_icons
+    p:not(:last-child) {
     margin-right: 1.3546vw;
   }
   main .info_item {
@@ -328,7 +345,7 @@ main section.map_section #map {
     width: 19.798vw;
     height: 19.798vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 1.042vw;
     margin-right: 1.042vw;
   }
@@ -348,7 +365,7 @@ main section.map_section #map {
     width: 12.7124vw;
     height: 12.7124vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 1.042vw;
     margin-right: 1.042vw;
   }
@@ -462,7 +479,7 @@ main section.map_section #map {
     height: 29.946vw;
     margin-right: 2.604vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 10px;
     margin-left: 0.5208vw;
     margin-top: 0.5208vw;
@@ -481,7 +498,13 @@ main section.map_section #map {
   main section.map_section .item_list .map_items .item_title .item_location {
     display: flex;
   }
-  main section.map_section .item_list .map_items .item_title .item_location img {
+  main
+    section.map_section
+    .item_list
+    .map_items
+    .item_title
+    .item_location
+    img {
     width: 2.3436vw;
     height: 2.8644vw;
     margin-right: 1.302vw;
@@ -509,7 +532,13 @@ main section.map_section #map {
   main section.map_section .item_list .map_items .item_title .item_icons p {
     font-size: 2.604vw;
   }
-  main section.map_section .item_list .map_items .item_title .item_icons p:not(:last-child) {
+  main
+    section.map_section
+    .item_list
+    .map_items
+    .item_title
+    .item_icons
+    p:not(:last-child) {
     margin-right: 1.3546vw;
   }
   main .info_item {

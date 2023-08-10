@@ -1,7 +1,6 @@
 <?php
     include 'inc_header.php';
 ?>
-
 <main>
     <section class="sns_banner">
         <img src="./img/sns_main_img.png" alt="main_banner" class="main_banner">
@@ -25,8 +24,11 @@
         <div id="youtube_results"></div>
     </section>
 </main>
+<script src="./js/config.js"></script>
 
-
+<script src="./js/sns_button.js"></script>
+<script src="./js/sns_youtube.js"></script>
+</script>
 <?php
     include 'inc_footer.php';
 ?>

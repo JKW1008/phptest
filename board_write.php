@@ -13,13 +13,11 @@
             </script>");
     }
     
-    $boardArr = $boardm->list();
-    $board_name = $boardm->getBoardName($bcode);
 
     $board = new Board($db);
 
 
-    $g_title = '게시판';
+    // $g_title = '게시판';
 
 ?>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -27,14 +25,15 @@
 </script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<main class="w-75 mx-auto border rounded-2 p-5">
-    <h1 class="text-center">게시판 글쓰기</h1>
-    <div class="mb-3">
+<script src="./js/board_write.js"></script>
+<main class="w-75 mx-auto border rounded-2 p-5 mt-5 mb-5">
+    <h1 class="text-center h1 mt-5 mb-5">게시판 글쓰기</h1>
+    <div class="pt-5 pb-5">
         <input type="text" name="subject" id="id_subject" class="form-control" placeholder="제목을 입력해 주세요."
             autocomplete="off">
     </div>
     <div id="summernote"></div>
-    <div class="mt-3">
+    <div class="mt-5 mb-5">
         <input type="file" name="attach" id="id_attach" multiple class="form-control">
     </div>
     <div class="mt-3 d-flex gap-2 justify-content-end">
@@ -46,7 +45,7 @@
 $('#summernote').summernote({
     placeholder: '내용을 입력해 주세요.',
     tabsize: 2,
-    height: 400,
+    height: 800,
     toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],

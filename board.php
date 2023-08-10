@@ -4,10 +4,10 @@
 ?>
 <?php
     
-    include 'inc_header.php';
 
     include "inc/board.php";    //  게시판 클래스
     include "inc/lib.php";      // 페이지네이션`
+    include 'inc_header.php';
 
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
     $page  = (isset($_GET['page' ]) && $_GET['page' ] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
@@ -48,13 +48,13 @@
 
     $boardRs = $board->list($bcode, $page, $limit, $paramArr);
 
-
 ?>
 <style>
 .tr {
     cursor: pointer;
 }
 </style>
+<script src="./js/board.js"></script>
 <main class="w-100 mx-auto border rounded-2 p-5">
     <h1 class="text-center"><?= $board_name; ?></h1>
     <table class="table table-dark table-striped table-hover  mt-5">

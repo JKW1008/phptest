@@ -45,14 +45,14 @@
       $_SESSION['ses_level'] = $userExists['level']; // 사용자 레벨이 있는 경우 해당 컬럼을 사용
     
       // 로그인 후에는 원하는 페이지로 리다이렉트합니다.
+      
       header('Location: index.php');
     }else{
       $divValue = array("kakao" => "카카오", "naver" => "네이버", "google" => "구글");
       echo "<script>
         alert('가입된 이메일이 존재합니다. (". $divValue[$userExists['login_social']].")'); 
-      </script>";
+      </script>";      
     }
-
 
   } else {
     session_start();
@@ -87,7 +87,7 @@
     }
   }
 
-  echo "
+  echo "  
     <script>
       self.location.href = 'index.php';
     </script>";

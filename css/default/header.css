@@ -26,7 +26,7 @@ header {
 }
 
 .header_inner {
-  width: 90%;
+  width: 100%;
   height: 90px;
   margin: 0 auto;
   display: flex;
@@ -216,7 +216,7 @@ header #weather span img {
     display: none;
   }
 
-  .nav_toggle #menuicon+label {
+  .nav_toggle #menuicon + label {
     display: block;
     width: 30px;
     height: 20px;
@@ -224,7 +224,7 @@ header #weather span img {
     cursor: pointer;
   }
 
-  .nav_toggle #menuicon+label span {
+  .nav_toggle #menuicon + label span {
     display: block;
     position: absolute;
     width: 100%;
@@ -234,31 +234,31 @@ header #weather span img {
     transition: all 0.35s;
   }
 
-  .nav_toggle #menuicon+label span:nth-child(1) {
+  .nav_toggle #menuicon + label span:nth-child(1) {
     top: 0;
   }
 
-  .nav_toggle #menuicon+label span:nth-child(2) {
+  .nav_toggle #menuicon + label span:nth-child(2) {
     top: 50%;
     transform: translateY(-50%);
     right: 0;
     width: 80%;
   }
 
-  .nav_toggle #menuicon+label span:nth-child(3) {
+  .nav_toggle #menuicon + label span:nth-child(3) {
     bottom: 0;
   }
 
-  .nav_toggle #menuicon:checked+label span:nth-child(1) {
+  .nav_toggle #menuicon:checked + label span:nth-child(1) {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
   }
 
-  .nav_toggle #menuicon:checked+label span:nth-child(2) {
+  .nav_toggle #menuicon:checked + label span:nth-child(2) {
     opacity: 0;
   }
 
-  .nav_toggle #menuicon:checked+label span:nth-child(3) {
+  .nav_toggle #menuicon:checked + label span:nth-child(3) {
     bottom: 50%;
     transform: translateY(50%) rotate(-45deg);
   }
@@ -274,7 +274,7 @@ header #weather span img {
     border-left: 1px solid #eee;
   }
 
-  .nav_toggle #menuicon:checked+label+div {
+  .nav_toggle #menuicon:checked + label + div {
     left: 30%;
     top: 91px;
   }
@@ -327,7 +327,7 @@ header #weather span img {
     height: 45px;
   }
 
-  .nav_toggle #menuicon:checked+label+div {
+  .nav_toggle #menuicon:checked + label + div {
     left: 0;
   }
 }

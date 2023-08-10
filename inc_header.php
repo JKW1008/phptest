@@ -3,18 +3,12 @@
     include "inc/dbconfig.php";
 
     $db = $pdo;
-
-    include "inc/member.php";
-    $js_array = ['js/login.js', 'js/board.js', 'js/board_write.js'];
-
-
     include 'inc/boardmanage.php';   
 
-    $boardm = new BoardManage($db);  
-    $boardArr = $boardm->list();
     include "const.php";
 
-
+    include "./inc/member.php";
+    $member = new Member($db);
 ?>
 
 <!DOCTYPE html>
@@ -31,21 +25,24 @@
     </script>
     <script src="./js/signup.js"></script>
     <script src="./js/member.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/mypage.js"></script>
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link type="image/x-icon" rel="icon" sizes="180x180" href="./img/apple-icon-180x180.png" />
     <link rel="stylesheet" href="./css/all.css">
     <?php
-    if (isset($js_array)) {
-        foreach ($js_array as $var) {
-            echo  '<script src="' . $var . '?v=' . date('YmdHis') . '"></script>' . PHP_EOL;
+    if(isset($js_array)){
+        foreach($js_array AS $var){
+            echo '<script src="'.$var.'?v='. date('YmdHis') .'"></script>'.PHP_EOL;
         }
     }
     ?>
+
 </head>
 
 <body>
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <header>
         <div class="header_inner">
             <a href="./index.php"><img src="./img/logo_black.png" alt="동성로랑 logo" /></a>
             <nav class="menu_wrapper">
@@ -129,14 +126,16 @@
                     <?php 
                                 if ($ses_level == 10) { 
                         ?>
-                    <li class="nav-item"><a href="./admin/" class="nav-link">관리자</a></li>
+                    <a href="./admin/" class="aflog heabu" id="goadmin"><button>관리자</button></a>
                     <?php 
-                                } 
+                                }else{
                         ?>
+                    <a href="mypage.php" class="aflog heabu"><button>마이페이지</button></a>
+                    <?php
+                                }
+                    ?>
 
-
-                    <li class="nav-item"><a href="mypage.php" class="nav-link"><button>마이페이지</button></a></li>
-                    <li class="nav-item"><a href="./pg/logout.php" class="nav-link"><button>로그아웃</button></a></li>
+                    <a href="./pg/logout.php" class="aflog heabu"><button>로그아웃</button></a>
                     <?php
                             // foreach($boardArr AS $row){
                             //     echo '<li class="nav-item"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
@@ -152,14 +151,15 @@
                         ?>
                     <img src="./img/user_icon.png" alt="user_icon" class="main_login_btn user_icon" />
 
-                    <button class="main_login_btn">로그인</button>
-                    <button id="signup">회원가입</button>
+                    <button class="main_login_btn heabu">로그인</button>
+                    <button id="signup" class="heabu">회원가입</button>
                     <?php
                             }
                         ?>
                     <!-- <button class="main_login_btn">로그인</button>
                     <button>회원가입</button> -->
                 </div>
+
                 <!-- 토글 메뉴 -->
                 <div class="nav_toggle">
                     <input type="checkbox" name="" id="menuicon" />
@@ -263,17 +263,18 @@
                     </div>
                     <button class="login_btn" id="btn_login" type="button">로그인</button>
                     <button class="register_btn" id="signup">회원가입</button>
-                    <div class="border_line"></div>
-                    <p class="sns_login">SNS 간편 로그인</p>
-                    <a href="<?= SocialLogin::socialLoginUrl("google");  ?>"><img src="./images/google_btn.png"
-                            onclick="check_input" class="w-100 mt-2"></a>
-                    <a href=<?=  SocialLogin::socialLoginUrl("kakao") ?>><img
-                            src="./images/kakao_login_medium_narrow.png" onclick="check_input" class="w-100 mt-2"></a>
+                    <div id="social_login_wrap">
+                        <div id="social_login_btns">
+                            <a href="<?= SocialLogin::socialLoginUrl("google");  ?>"><img src="./images/google.png"
+                                    onclick="check_input" width="80px"></a>
+                            <a href=<?=  SocialLogin::socialLoginUrl("kakao") ?>><img src="./images/kakao.png"
+                                    onclick="check_input" width="80px"></a>
 
-                    <a href=<?=  SocialLogin::socialLoginUrl("naver") ?>><img src="./images/naver_btn.png"
-                            onclick="check_input" class="w-100 mt-2"></a>
+                            <a href=<?=  SocialLogin::socialLoginUrl("naver") ?>><img src="./images/naver.png"
+                                    onclick="check_input" width="80px"></a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-
     </dialog>

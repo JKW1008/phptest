@@ -1,8 +1,5 @@
 <?php
-    session_start();
-
-    $ses_id = (isset($_SESSION['ses_id']) && $_SESSION['ses_id'] != '') ? $_SESSION['ses_id'] : '';
-    $ses_level = (isset($_SESSION['ses_level']) && $_SESSION['ses_level'] != '') ? $_SESSION['ses_level'] : ''; // 이 부분을 추가해줍니다.
+    include 'inc_header.php';
 
     if($ses_id == ''){
         echo "
@@ -13,28 +10,19 @@
             ";
         exit;
     }
-
-    include 'inc/dbconfig.php';
-        $db = $pdo;
-
-    include 'inc/member.php';
-
     $mem = new Member($db);
     
     $memArr = $mem->getInfo($ses_id);
-
-    $js_array = ['js/mypage.js'];
-
+    
     $g_title = 'My Page';
 
-    // print_r($_POST);
-    include 'inc_header.php';
 ?>
-
+<link rel="stylesheet" href="./css/mypage.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="./js/mypage.js"></script>
 
-<main class="w-50 mx-auto border rounded-5 p-5">
-    <h1 class="text-center">회원정보수정</h1>
+<main class="w-75 mx-auto border rounded-5 p-5">
+    <h1 class="text-center h1">회원정보수정</h1>
     <form name="input_form" method="post" enctype="multipart/form-data" autocomplete="off"
         action="pg/member_process.php">
         <input type="hidden" name="mode" value="edit">

@@ -4,34 +4,26 @@ include "inc/dbconfig.php";
 
 $db = $pdo;
 
-if ($ses_id == '') {
-    include 'inc_header.php';
-
-    echo "
-        <script>
-            alert('로그인이 필요한 서비스입니다.');
-            const loginModal = document.querySelector('#loginModal');
-            loginModal.showModal();
-        </script>
-    ";
-}
 include 'inc_header.php';
 
 include 'inc/board.php';
-include "inc/lib.php";      // 페이지네이션
+include "inc/lib.php"; // 페이지네이션
 
 $board = new Board($db);
 
 $limit = 10; // 페이지당 게시글 수
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+$param = '&search=' . $_GET['search'] . '&list_answer=' . $_GET['list_answer']; // 기존 쿼리 파라미터를 페이지네이션에 추가
+
 $offset = ($page - 1) * $limit;
 
-$boardData = $board->getBoardList($limit, $offset);
+$paramArr = []; // Initialize the $paramArr array here
 
-$total = count($boardData); // 모든 게시물 수 가져오기
+$boardData = $board->getBoardList($limit, $offset, $paramArr);
+$total = count($board->getBoardList(9999, 0, $paramArr)); // 9999를 최대 값으로 지정하여 전체 게시물 수 계산
 
 $page_limit = 5;
-$param = ''; // 필요한 경우 페이지네이션에 추가 파라미터를 설정하세요
+
 
 ?>
 <main class="question_wrapper">
@@ -72,12 +64,7 @@ $param = ''; // 필요한 경우 페이지네이션에 추가 파라미터를 �
 
     <!-- 글 목록 -->
     <table class="board">
-        <colgroup>
-            <col width="60%">
-            <col width="15%">
-            <col width="10%">
-            <col width="10%">
-        </colgroup>
+
         <th>제목</th>
         <th class="item-none">카테고리</th>
         <th class="item-none">조회 수</th>
@@ -92,13 +79,17 @@ $param = ''; // 필요한 경우 페이지네이션에 추가 파라미터를 �
             </td>
             <td class="item_detail item-none"><?= $item['manage_name'] ?></td>
             <td class="item_detail item-none"><?= $item['hit'] ?></td>
-            <td class="item_detail"><?= $item['create_at'] ?></td>
+            <td class="item_detail"><?= substr($item['create_at'], 0, 10); ?></td>
         </tr>
         <?php
         }
         ?>
     </table>
-
+    <style>
+    .board th {
+        text-align: center;
+    }
+    </style>
     <!-- 페이지네이션 -->
     <div class="page">
         <?php

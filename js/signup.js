@@ -3,4 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   signup.addEventListener("click", () => {
     window.location.href = "./stipulation.php";
   });
+
+  const goadmin = document.querySelector(".goadmin");
+  goadmin.addEventListener("click", () => {
+    window.location.href = "./admin";
+  });
 });

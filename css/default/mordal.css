@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
 * {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 dialog::backdrop {
@@ -10,16 +10,16 @@ dialog::backdrop {
 
 dialog {
   width: 390px;
-  height: 540px;
   position: fixed;
   /* 모달 창 크기의 반을 빼주어 중간에 위치시켜줌! */
-  top: calc(50vh - 270px);
+  top: calc(50vh - 320px);
   margin: 0 auto;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   border: 0;
   text-align: center;
   border-radius: 10px;
-  padding: 20px 30px 10px 30px;
+  padding: 20px 30px;
+  padding-bottom: 30px;
 }
 
 /*  */
@@ -51,7 +51,7 @@ dialog button {
   margin: 10px 0;
   width: 100%;
   height: 52px;
-  border: 2px solid #ECECEC;
+  border: 2px solid #ececec;
   border-radius: 10px;
 }
 
@@ -69,7 +69,7 @@ dialog button {
   outline: none;
   padding: 0 35px 0 20px;
   color: black;
-  color: #7E7E7E;
+  color: #7e7e7e;
   font-size: 14px;
   font-weight: 500;
 }
@@ -84,7 +84,7 @@ dialog button {
 
 .forget label {
   margin-top: 15px;
-  color: #7E7E7E;
+  color: #7e7e7e;
 }
 
 .forget label a {
@@ -112,10 +112,9 @@ button.register_btn {
 }
 
 button.register_btn {
-  font-size: .9em;
+  font-size: 0.9em;
   color: #08f;
   text-align: center;
-  margin: 10px 0 40px;
   background-color: white;
 }
 
@@ -123,7 +122,7 @@ button.register_btn {
   margin: 0 auto;
   width: 100%;
   height: 1px;
-  border-top: 2px solid #ECECEC;
+  border-top: 2px solid #ececec;
 }
 
 .sns_login {
@@ -133,7 +132,7 @@ button.register_btn {
   position: relative;
   bottom: 42px;
   background: white;
-  color: var(--sub-text, #7E7E7E);
+  color: var(--sub-text, #7e7e7e);
   font-family: Noto Sans;
   font-size: 16px;
   font-style: normal;
@@ -142,7 +141,7 @@ button.register_btn {
 
 .close_btn {
   background: none;
-  color: #7E7E7E;
+  color: #7e7e7e;
   border: none;
   font-size: 1.2em;
 

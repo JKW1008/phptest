@@ -88,22 +88,28 @@
             return $stmt->fetchAll();
         }
 
-        public function getBoardList($limit, $offset) {
+        public function getBoardList($limit, $offset, $paramArr) {
+            $start = $offset;
+            $where = ''; // Remove the $where variable
+            
+            $params = []; // Initialize the $params array here
+        
+            if (isset($paramArr['sn']) && $paramArr['sn'] != '' && isset($paramArr['sf']) && $paramArr['sf'] != '') {
+                // ... (same as before)
+            }
+            
             $sql = "SELECT board.subject, board.create_at, board.hit, board_manage.name AS manage_name
                     FROM board
                     INNER JOIN board_manage ON board.bcode = board_manage.bcode
-                    ORDER BY board.create_at DESC
-                    LIMIT :limit OFFSET :offset";
-        
+                    " . $where . "
+                    ORDER BY board.create_at DESC LIMIT " . $start . "," . $limit;
+            
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-        
-            return $result;
+            $stmt->execute($params);
+            return $stmt->fetchAll();
         }
+        
         
         
         

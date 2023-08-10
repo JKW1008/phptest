@@ -43,9 +43,9 @@ body .main_text span {
   font-weight: bold;
 }
 
-section.main_carousel {
+/* section.main_carousel {
   padding-top: 20px;
-}
+} */
 section.main_carousel .swiper {
   width: 96%;
 }

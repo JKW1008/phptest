@@ -6,7 +6,6 @@ body {
 
 main {
   font-family: "Noto Sans KR", sans-serif;
-  padding-top: 90px;
 }
 main section.sns_banner {
   position: relative;
@@ -67,19 +66,19 @@ main section.sns_banner .hashtag .tag-button.active {
   border-color: var(--border-color);
   color: var(--text-color);
 }
-main section.sns_banner .hashtag .tag-button[data-tag=관광지] {
+main section.sns_banner .hashtag .tag-button[data-tag="관광지"] {
   --border-color: #d35f85;
   --text-color: #d35f85;
 }
-main section.sns_banner .hashtag .tag-button[data-tag=맛집] {
+main section.sns_banner .hashtag .tag-button[data-tag="맛집"] {
   --border-color: #f54747;
   --text-color: #f54747;
 }
-main section.sns_banner .hashtag .tag-button[data-tag=쇼핑] {
+main section.sns_banner .hashtag .tag-button[data-tag="쇼핑"] {
   --border-color: #9747ff;
   --text-color: #9747ff;
 }
-main section.sns_banner .hashtag .tag-button[data-tag=호텔] {
+main section.sns_banner .hashtag .tag-button[data-tag="호텔"] {
   --border-color: #28a342;
   --text-color: #28a342;
 }
@@ -102,7 +101,7 @@ main section.youtube_items div#youtube_results img {
   width: 23.445vw;
   height: 13.2334vw;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 10px;
 }
 main section.youtube_items div#youtube_results p {
@@ -180,7 +179,7 @@ main section.youtube_items div#youtube_results p {
     width: 45.57vw;
     height: 26.04vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 10px;
   }
   main section.youtube_items div#youtube_results p {
@@ -256,7 +255,7 @@ main section.youtube_items div#youtube_results p {
     width: 90.9466vw;
     height: 52.1024vw;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-radius: 10px;
   }
   main section.youtube_items div#youtube_results p {

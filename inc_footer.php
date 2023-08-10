@@ -19,20 +19,18 @@
         </div>
     </div>
 </footer>
+<script src="./js/mordal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
 <!--  -->
+<script src="./js/config.js"></script>
+
 <script src="https://kit.fontawesome.com/59f8fe4f52.js" crossorigin="anonymous"></script>
 <script src="./js/toggle.js"></script>
 
-<!-- Initialize Swiper -->
-<script src="./js/first_carousel.js"></script>
-<script src="./js/second_carousel.js"></script>
-<script src="./js/main_carousel.js"></script>
-<script src="./js/config.js"></script>
 <script src="./js/weather.js"></script>
-<script src="./js/mordal.js"></script>
-<script src="./js/youtube.js"></script>
+
+<!-- Initialize Swiper -->
+
 </body>
 
 </html>

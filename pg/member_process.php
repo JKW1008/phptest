@@ -20,14 +20,12 @@
 
     // 아이디 중복확인
     if($mode == 'id_chk'){
-
+    
         if($id == ''){
             die(json_encode(['result' => 'empty_id']));
-            
         }
         
         if($mem->id_exist($id)){
-
             die(json_encode(['result' => 'fail']));
             
          }else{
@@ -82,7 +80,8 @@
 
         echo "
         <script>
-            self.location.href='../member_success.php'
+            alert('회원가입을 축하드립니다.');
+            self.location.href='../index.php'
         </script>";
 
     }else if($mode == 'edit'){

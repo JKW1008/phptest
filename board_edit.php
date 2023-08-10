@@ -1,9 +1,5 @@
 <?php
-    include 'inc/common.php';
-
-    include 'inc/dbconfig.php';
-
-    $db = $pdo; 
+    include 'inc_header.php';
     
     include "inc/board.php";
 
@@ -26,10 +22,7 @@
     }
 
     // 게시판 목록
-    include 'inc/boardmanage.php';
 
-    $boardm = new BoardManage($db);
-    $boardArr = $boardm->list();
     $board_name = $boardm->getBoardName($bcode);
 
     // 게시판
@@ -45,11 +38,8 @@
 
     $boardRow['content'] = str_replace('`','\`', $boardRow['content']);
 
-    $js_array = ['js/board_edit.js'];
 
-    $g_title = '게시판';
 
-    include 'inc_header.php';
 ?>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
