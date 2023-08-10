@@ -131,13 +131,12 @@
                         ?>
                     <li class="nav-item"><a href="./admin/" class="nav-link">관리자</a></li>
                     <?php 
-                                } else { 
-                        ?>
-                    <li class="nav-item"><a href="mypage.php" class="nav-link"><button>마이페이지</button></a></li>
-                    <li class="nav-item"><a href="./pg/logout.php" class="nav-link"><button>로그아웃</button></a></li>
-                    <?php 
                                 } 
                         ?>
+
+
+                    <li class="nav-item"><a href="mypage.php" class="nav-link"><button>마이페이지</button></a></li>
+                    <li class="nav-item"><a href="./pg/logout.php" class="nav-link"><button>로그아웃</button></a></li>
                     <?php
                             // foreach($boardArr AS $row){
                             //     echo '<li class="nav-item"><a href="board.php?bcode='.$row['bcode'].'" class="nav-link';
