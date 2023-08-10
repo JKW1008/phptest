@@ -7,7 +7,7 @@
     include 'inc_header.php';
 
     include "inc/board.php";    //  게시판 클래스
-    include "inc/lib.php";      // 페이지네이션
+    include "inc/lib.php";      // 페이지네이션`
 
     $bcode = (isset($_GET['bcode']) && $_GET['bcode'] != '') ? $_GET['bcode'] : '';
     $page  = (isset($_GET['page' ]) && $_GET['page' ] != '' && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
@@ -25,7 +25,6 @@
 
 
 
-    $db = $pdo; 
 
     $board = new Board($db);
 
@@ -76,7 +75,7 @@
         <?php
             $cnt = 0;
             $ntotal = $total - ($page - 1) * $limit;
-            foreach($boardRs AS$boardRow){
+            foreach($boardRs AS $boardRow){
                 $number = $ntotal - $cnt;
                 $cnt++;
         ?>

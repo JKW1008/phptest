@@ -8,9 +8,9 @@
     $js_array = ['js/login.js', 'js/board.js', 'js/board_write.js'];
 
 
-    include 'inc/boardmanage.php';
+    include 'inc/boardmanage.php';   
 
-    $boardm = new BoardManage($db);
+    $boardm = new BoardManage($db);  
     $boardArr = $boardm->list();
     include "const.php";
 

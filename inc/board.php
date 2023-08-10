@@ -87,6 +87,24 @@
             $stmt->execute();
             return $stmt->fetchAll();
         }
+
+        public function getBoardList($limit, $offset) {
+            $sql = "SELECT board.subject, board.create_at, board.hit, board_manage.name AS manage_name
+                    FROM board
+                    INNER JOIN board_manage ON board.bcode = board_manage.bcode
+                    ORDER BY board.create_at DESC
+                    LIMIT :limit OFFSET :offset";
+        
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+        
+            return $result;
+        }
+        
         
         
         // 전체 글 수 구하기

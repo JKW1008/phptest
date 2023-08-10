@@ -1,19 +1,38 @@
 <?php
-       include './inc/common.php';
+include './inc/common.php';
+include "inc/dbconfig.php";
 
-       if($ses_id == ''){
-         include 'inc_header.php';
-   
-         echo "
-             <script>
-                 alert('로그인이 필요한 서비스입니다.');
-               const loginModal = document.querySelector('#loginModal');
-               loginModal.showModal();
-             </script>
-             ";
-     }
-     include 'inc_header.php';
-   
+$db = $pdo;
+
+if ($ses_id == '') {
+    include 'inc_header.php';
+
+    echo "
+        <script>
+            alert('로그인이 필요한 서비스입니다.');
+            const loginModal = document.querySelector('#loginModal');
+            loginModal.showModal();
+        </script>
+    ";
+}
+include 'inc_header.php';
+
+include 'inc/board.php';
+include "inc/lib.php";      // 페이지네이션
+
+$board = new Board($db);
+
+$limit = 10; // 페이지당 게시글 수
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+$boardData = $board->getBoardList($limit, $offset);
+
+$total = count($boardData); // 모든 게시물 수 가져오기
+
+$page_limit = 5;
+$param = ''; // 필요한 경우 페이지네이션에 추가 파라미터를 설정하세요
+
 ?>
 <main class="question_wrapper">
     <!-- title -->
@@ -34,7 +53,7 @@
 
     <!-- 셀렉트 -->
     <div class="list_select">
-        <p>10개의 게시글이 있습니다.</p>
+        <p><?= $total ?>개의 게시글이 있습니다.</p>
         <div>
             <select name="list_answer" class="list_answer">
                 <option value="">카테고리</option>
@@ -53,116 +72,41 @@
 
     <!-- 글 목록 -->
     <table class="board">
+        <colgroup>
+            <col width="60%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+        </colgroup>
         <th>제목</th>
         <th class="item-none">카테고리</th>
-        <th class="item-none">답변수</th>
+        <th class="item-none">조회 수</th>
         <th>작성일</th>
+        <?php
+        foreach ($boardData as $item) {
+            ?>
         <tr class="board_item">
             <td>
                 <span>[미답변]</span>
-                부모님 모시고 갈 음식점 좀 추천...
+                <?= $item['subject']; ?>
             </td>
-            <td class="item_detail item-none">음식점</td>
-            <td class="item_detail item-none">0</td>
-            <td class="item_detail">2023.07.23</td>
+            <td class="item_detail item-none"><?= $item['manage_name'] ?></td>
+            <td class="item_detail item-none"><?= $item['hit'] ?></td>
+            <td class="item_detail"><?= $item['create_at'] ?></td>
         </tr>
-        <tr class="board_item">
-            <td>
-                <span>[미답변]</span>
-                가성비 좋은 숙소 좀 알려주세요
-            </td>
-            <td class="item_detail item-none">숙박</td>
-            <td class="item_detail item-none">0</td>
-            <td class="item_detail">2023.07.23</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[미답변]</span>
-                스시 맛집 뭐가 있나요?
-            </td>
-            <td class="item_detail item-none">음식점</td>
-            <td class="item_detail item-none">0</td>
-            <td class="item_detail">2023.06.28</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                스파크랜드 가격이 어떻게 되나요 ?
-            </td>
-            <td class="item_detail item-none">관광지</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2023.05.23</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                자라 매장 어디있나요 ?
-            </td>
-            <td class="item_detail item-none">쇼핑</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2023.02.14</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                대구백화점 어디 갔나요?
-            </td>
-            <td class="item_detail item-none">쇼핑</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2023.01.10</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                어린이들이 놀만한 곳 추천해주세요.
-            </td>
-            <td class="item_detail item-none">관광지</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2022.12.29</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                동성로 게스트하우스 있나요?
-            </td>
-            <td class="item_detail item-none">숙박</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2022.12.20</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                동성로 스터디카페 ICAN 어떤가...
-            </td>
-            <td class="item_detail item-none">관광지</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2022.10.08</td>
-        </tr>
-        <tr class="board_item">
-            <td>
-                <span>[답변]</span>
-                동성로에 탕후루 집 있나요?
-            </td>
-            <td class="item_detail item-none">음식점</td>
-            <td class="item_detail item-none">1</td>
-            <td class="item_detail">2022.09.03</td>
-        </tr>
+        <?php
+        }
+        ?>
     </table>
 
     <!-- 페이지네이션 -->
     <div class="page">
-        <img src="./img/arrow_leftleft.png" alt="" />
-        <img src="./img/arrow_left.png" alt="" />
-        <span class="first">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <img src="./img/arrow_right.png" alt="" />
-        <img src="./img/arrow_rightright.png" alt="" />
+        <?php
+        echo my_pagination($total, $limit, $page_limit, $page, $param);
+        ?>
     </div>
 </main>
 
 <?php
-    include 'inc_footer.php';
+include 'inc_footer.php';
 ?>
