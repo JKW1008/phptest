@@ -38,9 +38,8 @@
         }
     }
     ?>
-
+    <link rel="stylesheet" href="./css/all.css">
 </head>
-<link rel="stylesheet" href="./css/all.css">
 
 <body>
     <header>
