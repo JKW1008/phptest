@@ -26,6 +26,7 @@ $page_limit = 5;
 
 
 ?>
+<link rel="stylesheet" href="./css/know_in.css">
 <!-- title -->
 <section class="sns_banner">
     <img src="./img/SNS_bg.png" alt="main_banner" class="main_banner">

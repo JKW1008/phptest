@@ -1,6 +1,7 @@
 <?php
     include 'inc_header.php';
 ?>
+<link rel="stylesheet" href="./css/sns.css">
 <main>
     <section class="sns_banner">
         <img src="./img/sns_main_img.png" alt="main_banner" class="main_banner">
