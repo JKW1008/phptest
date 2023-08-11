@@ -30,7 +30,7 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link type="image/x-icon" rel="icon" sizes="180x180" href="./img/apple-icon-180x180.png" />
-    <link rel="stylesheet" href="./css/all.css">
+
     <?php
     if(isset($js_array)){
         foreach($js_array AS $var){
@@ -40,6 +40,7 @@
     ?>
 
 </head>
+<link rel="stylesheet" href="./css/all.css">
 
 <body>
     <header>
